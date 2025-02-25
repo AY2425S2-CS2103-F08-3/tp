@@ -2,6 +2,7 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -25,6 +26,9 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
+    private ArrayList<HashSet<Tag>> propertyPrefences = new ArrayList<>();
+
+
     /**
      * Every field must be present and not null.
      */
@@ -35,6 +39,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        propertyPrefences.add((HashSet<Tag>) this.tags);
     }
 
     public Name getName() {
@@ -72,6 +77,14 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName());
+    }
+
+    public ArrayList<HashSet<Tag>> getPropertyPrefences() {
+        return propertyPrefences;
+    }
+
+    public void setPropertyPrefences(ArrayList<HashSet<Tag>> prefences){
+        this.propertyPrefences = prefences;
     }
 
     /**

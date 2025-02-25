@@ -3,6 +3,8 @@ package seedu.address.model.tag;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.ArrayList;
+
 /**
  * Represents a Tag in the address book.
  * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}
@@ -14,6 +16,7 @@ public class Tag {
 
     public final String tagName;
 
+    public static final ArrayList<Tag> tagList = new ArrayList<>();
     /**
      * Constructs a {@code Tag}.
      *
@@ -23,6 +26,7 @@ public class Tag {
         requireNonNull(tagName);
         checkArgument(isValidTagName(tagName), MESSAGE_CONSTRAINTS);
         this.tagName = tagName;
+        tagList.add(this);
     }
 
     /**
