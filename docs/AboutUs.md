@@ -50,12 +50,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Zhao Yi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/toxoptimism.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/ToxOptimism)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Team Lead, Developer
+* Responsibilities: Documentation, Code Quality
+* In-charge of: Model component
