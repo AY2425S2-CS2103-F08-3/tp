@@ -11,7 +11,7 @@
         "jane-doe": "Jane Doe",
         "low-jian-cheng": "Low Jian Cheng",
         "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "zhao-yi": "Zhao Yi"
       },
       "headingKeywords": {}
     },
@@ -144,8 +144,16 @@
       "headingKeywords": {}
     },
     {
-      "src": "team/johndoe.md",
+      "src": "team/xiaoyong.md",
       "title": "Chan Xiao Yong's Project Portfolio Page",
+      "headings": {
+        "project-matchestate": "Project: MatchEstate"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/zhaoyi.md",
+      "title": "Zhao Yi's Project Portfolio Page",
       "headings": {
         "project-matchestate": "Project: MatchEstate"
       },
