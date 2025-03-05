@@ -7,11 +7,11 @@
       "headings": {
         "about-us": "About Us",
         "project-team": "Project team",
+        "yap-zhao-yi": "Yap Zhao Yi",
         "chan-xiao-yong": "Chan Xiao Yong",
         "lester-lim-jia-jun": "Lester Lim Jia Jun",
         "low-jian-cheng": "Low Jian Cheng",
-        "jean-doe": "Jean Doe",
-        "zhao-yi": "Zhao Yi"
+        "lee-lemuel-john-alejo-censon": "Lee Lemuel John Alejo Censon"
       },
       "headingKeywords": {}
     },
@@ -152,6 +152,15 @@
       "headingKeywords": {}
     },
     {
+      "src": "team/ryuse.md",
+      "title": "Lee Lemuel John Alejo Censon's Project Portfolio Page",
+      "headings": {
+        "project-matchestate": "Project: MatchEstate",
+        "given-below-are-my-contributions-to-the-project": "Given below are my contributions to the project."
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "team/xiaoyong.md",
       "title": "Chan Xiao Yong's Project Portfolio Page",
       "headings": {
@@ -161,7 +170,7 @@
     },
     {
       "src": "team/zhaoyi.md",
-      "title": "Zhao Yi's Project Portfolio Page",
+      "title": "Yap Zhao Yi's Project Portfolio Page",
       "headings": {
         "project-matchestate": "Project: MatchEstate"
       },
