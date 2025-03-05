@@ -8,7 +8,7 @@
         "about-us": "About Us",
         "project-team": "Project team",
         "chan-xiao-yong": "Chan Xiao Yong",
-        "jane-doe": "Jane Doe",
+        "lester-lim-jia-jun": "Lester Lim Jia Jun",
         "low-jian-cheng": "Low Jian Cheng",
         "jean-doe": "Jean Doe",
         "zhao-yi": "Zhao Yi"
@@ -138,6 +138,14 @@
     {
       "src": "team/jiancheng.md",
       "title": "Low Jian Cheng's Project Portfolio Page",
+      "headings": {
+        "project-matchestate": "Project: MatchEstate"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/lester.md",
+      "title": "Lester Lim Jia Jun's Project Portfolio Page",
       "headings": {
         "project-matchestate": "Project: MatchEstate"
       },
