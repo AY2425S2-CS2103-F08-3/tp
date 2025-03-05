@@ -280,7 +280,16 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+### Value Proposition:
+
+Real estate agents often struggle to manage buyers and sellers through messaging apps.  
+**MatchEstate** provides a **streamlined solution** to:  
+- **Track buyers and sellers easily**, including their **preferences and offerings**.  
+- **Enable fast and accurate matching** between buyers and sellers.  
+- **Designed for CLI users**, ensuring efficiency for those who prefer typing over clicking.  
+
+With **MatchEstate**, real estate agents can save time, stay organized, and close deals faster.  
+
 
 
 ### User stories
