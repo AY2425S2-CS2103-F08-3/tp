@@ -272,13 +272,34 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:
+### Target User Profile:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+**Overview**  
+Tim is a **busy and independent** real estate agent who manages multiple buyers and sellers simultaneously. He frequently communicates with clients via messaging applications and records their preferences from chat logs. During **client meetups, open houses, and property tours**, he takes notes on common likes and dislikes.
+
+**Pain Points**  
+- Struggles with **managing client details** across **messaging apps and spreadsheets**.
+- Finds it **cumbersome to manually filter and match** buyers' requests with available property listings.
+- Needs to **separate client contacts from personal contacts** for **PDPA compliance**.
+- Prefers **offline tools** due to:
+  - Security concerns (customer data leaks).
+  - Unstable internet connections.
+- Does not use **CRM or organizational tools** as they do not align with his independent work style.
+
+**Work Patterns**  
+- **Primarily works alone**, but occasionally collaborates with other agents to exchange listing and client information.
+- Uses a **laptop and smartphone** for work.
+- Regularly **shares tools** he uses with other agents he is familiar with.
+- Works **on the go**, handling leads from **multiple sources**.
+- Commonly deals with clients whose **preferences overlap** with those of other clients.
+
+**Preferred Workflows & Tools**  
+- **Typing over clicking**: Experienced in fast typing, prefers **CLI tools** over GUI-based software for speed and efficiency.
+- **Prefers offline tools**:
+  - Ensures **data privacy** and **security**.
+  - Avoids reliance on **unstable internet connections**.
+- Records client details in **Excel spreadsheets**, sometimes updating them **on the fly**.
+- Needs a way to **quickly and accurately match buyers to sellers**.
 
 **Value proposition**: manage contacts faster than a typical mouse/GUI driven app
 
