@@ -44,6 +44,7 @@ public class RemarkCommand extends Command {
         this.index = index;
         this.remark = remark;
     }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         List<Person> lastShownList = model.getFilteredPersonList();
@@ -73,6 +74,7 @@ public class RemarkCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
+
         // short circuit if same object
         if (other == this) {
             return true;
@@ -82,6 +84,7 @@ public class RemarkCommand extends Command {
         if (!(other instanceof RemarkCommand)) {
             return false;
         }
+
 
         // state check
         RemarkCommand e = (RemarkCommand) other;
