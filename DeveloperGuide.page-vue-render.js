@@ -260,7 +260,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list persons")]
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The list is empty.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("2a1. MatchEstate displays a message for empty list.")]),_v(" "),_c('p',[_v("Use case ends.")])])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("1a. The list is empty.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("1a1. MatchEstate displays a message for an empty list.")]),_v(" "),_c('p',[_v("Use case resumes at 3.")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc03-delete-a-person-by-index"}},[_v("Use case: UC03 - Delete a person by index"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc03-delete-a-person-by-index","onclick":"event.stopPropagation()"}})])}
@@ -269,13 +269,13 @@ with(this){return _c('h4',{attrs:{"id":"use-case-uc03-delete-a-person-by-index"}
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list persons (UC02)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to delete a specific person by index")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of tags used by the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes ownership of property for all of the person’s property")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes the person")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list persons (UC02)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to delete a specific person by index")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of tags used by the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes ownership of property for all of the person’s properties")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes the person")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. Person has no property preferences.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])]),_v(" "),_c('li',[_c('p',[_v("4a. None of the person's property preferences have tags.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])]),_v(" "),_c('li',[_c('p',[_v("5a. Person has no properties.")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2a. Person has no property preferences.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])]),_v(" "),_c('li',[_c('p',[_v("3a. None of the person's property preferences have tags.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])]),_v(" "),_c('li',[_c('p',[_v("4a. Person has no properties.")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc04-add-property-to-person"}},[_v("Use case: UC04 - Add property to person"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc04-add-property-to-person","onclick":"event.stopPropagation()"}})])}
@@ -320,7 +320,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("3b. Necessary fields (price range or a tag) not specified.")]),_v(" "),_c('ul',[_c('li',[_v("3b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag to be made already  exists.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Tag specified does not  exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 5")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("3b. Necessary fields (price range or a tag) not specified.")]),_v(" "),_c('ul',[_c('li',[_v("3b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag to be made already exists.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Tag specified does not  exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3e. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 5")])]),_v(" "),_c('li',[_c('p',[_v("3f. No existing and new tags specified.")]),_v(" "),_c('p',[_v("Use case resumes at 6")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc07-add-tag-to-property-preference"}},[_v("Use case: UC07 - Add tag to property preference"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc07-add-tag-to-property-preference","onclick":"event.stopPropagation()"}})])}
@@ -335,7 +335,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("3b. The property preference index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag to be made already exists.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Tag specified does not exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 6")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("3b. The property preference index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag to be made already exists.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Tag specified does not exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3e. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 5")])]),_v(" "),_c('li',[_c('p',[_v("3f. No existing and new tags specified.")]),_v(" "),_c('p',[_v("Use case resumes at 6")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc08-delete-tag-from-property-preference"}},[_v("Use case: UC08 - Delete tag from property preference"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc08-delete-tag-from-property-preference","onclick":"event.stopPropagation()"}})])}
@@ -359,13 +359,13 @@ with(this){return _c('h4',{attrs:{"id":"use-case-uc09-delete-property-preference
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list persons (UC02)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to delete a property preference from a specific person by index")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of tags used by the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list persons(UC02)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to delete a property preference from a specific person by index")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate deletes the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of tags used by the person’s property preferences")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("2b. The preference index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. None of the person's property preferences have tags.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("2b. The preference index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. None of the person's property preferences have tags.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc010-add-a-property"}},[_v("Use case: UC010 - Add a property"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc010-add-a-property","onclick":"event.stopPropagation()"}})])}
@@ -380,7 +380,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The specified property is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3b. The specified property already exists.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3b1. MatchEstate shows an error message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag to be made already exists.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Tag specified does not exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("5a. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The specified property is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3b. The specified property already exists.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("3b1. MatchEstate shows an error message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag to be made already exists.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Tag specified does not exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])]),_v(" "),_c('li',[_c('p',[_v("4b. No existing and new tags specified.")]),_v(" "),_c('p',[_v("Use case resumes at 8")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc11-list-property"}},[_v("Use case: UC11 - List property"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc11-list-property","onclick":"event.stopPropagation()"}})])}
@@ -395,7 +395,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list property")
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The list is empty.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("2a1. MatchEstate displays a message for an empty list.")]),_v(" "),_c('p',[_v("Use case ends.")])])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("1a. The list is empty.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("1a1. MatchEstate displays a message for an empty list.")]),_v(" "),_c('p',[_v("Use case resumes at 3.")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc12-add-tag-to-property"}},[_v("Use case: UC12 - Add tag to property"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc12-add-tag-to-property","onclick":"event.stopPropagation()"}})])}
@@ -404,13 +404,13 @@ with(this){return _c('h4',{attrs:{"id":"use-case-uc12-add-tag-to-property"}},[_v
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list property (UC11)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list tags (UC16)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to add a tag to property")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate creates new tags")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of the tags")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the property’s tags")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list property(UC11)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list tags (UC16)")])])]),_v(" "),_c('li',[_c('p',[_v("User requests to add a tag to property")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate creates new tags")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of the tags")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the property’s tags")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The property index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("3b. Tag to be made already exists.")]),_v(" "),_c('ul',[_c('li',[_v("3b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag specified does not exist.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 5")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The property index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends")])]),_v(" "),_c('li',[_c('p',[_v("3b. Tag to be made already exists.")]),_v(" "),_c('ul',[_c('li',[_v("3b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3c. Tag specified does not exist.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 5")])]),_v(" "),_c('li',[_c('p',[_v("3e. No existing and new tags specified.")]),_v(" "),_c('ul',[_c('li',[_v("3e1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc13-delete-tag-from-property"}},[_v("Use case: UC13 - Delete tag from property"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc13-delete-tag-from-property","onclick":"event.stopPropagation()"}})])}
@@ -440,7 +440,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The property index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. The property does not have tags.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])]),_v(" "),_c('li',[_c('p',[_v("5a. The property is not assigned to any person")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The property index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3a. The property does not have tags.")]),_v(" "),_c('p',[_v("Use case resumes at 5.")])]),_v(" "),_c('li',[_c('p',[_v("3b. The property is not assigned to any person")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc15-add-a-tag"}},[_v("Use case: UC15 - Add a tag"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc15-add-a-tag","onclick":"event.stopPropagation()"}})])}
@@ -470,7 +470,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list tag")])]),
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The list is empty.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("2a1. MatchEstate displays a message for an empty list.")]),_v(" "),_c('p',[_v("Use case ends.")])])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("1a. The list is empty.")]),_v(" "),_c('ul',[_c('li',[_c('p',[_v("1a1. MatchEstate displays a message for an empty list.")]),_v(" "),_c('p',[_v("Use case resumes at 3.")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc17-delete-tag"}},[_v("Use case: UC17 - Delete tag"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc17-delete-tag","onclick":"event.stopPropagation()"}})])}
@@ -545,6 +545,6 @@ with(this){return _c('h3',{attrs:{"id":"saving-data"}},[_v("Saving data"),_c('a'
 with(this){return _c('ol',[_c('li',[_c('p',[_v("Dealing with missing/corrupted data files")]),_v(" "),_c('ol',[_c('li',[_c('em',[_v("{explain how to simulate a missing/corrupted file, and the expected behavior}")])])])]),_v(" "),_c('li',[_c('p',[_c('em',[_v("{ more test cases …​ }")])])])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.5.3")]),_v(", generated on Thu, 6 Mar 2025, 18:38:37 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.5.3")]),_v(", generated on Thu, 6 Mar 2025, 21:03:31 GMT+8]")])])])}
 }];
   
