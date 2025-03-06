@@ -56,6 +56,7 @@
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
+        "target-user-profile": "Target User Profile:",
         "value-proposition": "Value Proposition:",
         "user-stories": "User stories",
         "use-cases": "Use cases",
