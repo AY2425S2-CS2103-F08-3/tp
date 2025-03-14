@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.listing.Listing;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
 
 /**
  * Container for user visible messages.
@@ -73,6 +74,16 @@ public class Messages {
                     .append("; Property Name: ")
                     .append(listing.getPropertyName());
         }
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code person} for display to the user.
+     */
+    public static String format(Set<Tag> tags) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("; Tags: ");
+        tags.forEach(builder::append);
         return builder.toString();
     }
 
