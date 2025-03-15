@@ -12,6 +12,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.listing.Listing;
 import seedu.address.model.listing.UniqueListingList;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PropertyPreference;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.TagRegistry;
@@ -69,9 +70,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.listings.setListings(listings);
     }
 
-
     /**
-     * Replaces the given listing {@code target} in the list with {@code editedListing}.
+     * Replaces the given listing {@code target} with {@code editedListing}.
      * Ensures that the {@code target} exists in the address book.
      *
      * @param target The original listing to be replaced.
@@ -79,7 +79,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setListings(Listing target, Listing editedPerson) {
         requireNonNull(editedPerson);
-
         listings.setListing(target, editedPerson);
     }
 
@@ -101,6 +100,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<Listing> getListingList() {
         return listings.asUnmodifiableObservableList();
     }
+
 
     /**
      * Adds a listing to the address book.
@@ -179,7 +179,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(tags);
         TagRegistry tagRegistry = TagRegistry.of();
         for (String tagName : tags) {
-            tagRegistry.add(new Tag(tagName, new ArrayList<>()));
+            tagRegistry.add(new Tag(tagName, new ArrayList<>(), new ArrayList<>()));
         }
     }
 
@@ -193,7 +193,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(tags);
         TagRegistry tagRegistry = TagRegistry.of();
         for (String tagName : tags) {
-            Tag tag = new Tag(tagName, new ArrayList<>());
+            Tag tag = new Tag(tagName, new ArrayList<>(), new ArrayList<>());
             if (!tagRegistry.contains(tag)) {
                 return false;
             }
@@ -211,7 +211,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(tags);
         TagRegistry tagRegistry = TagRegistry.of();
         for (String tagName : tags) {
-            Tag tag = new Tag(tagName, new ArrayList<>());
+            Tag tag = new Tag(tagName, new ArrayList<>(), new ArrayList<>());
             if (tagRegistry.contains(tag)) {
                 return true;
             }
@@ -230,6 +230,20 @@ public class AddressBook implements ReadOnlyAddressBook {
         TagRegistry tagRegistry = TagRegistry.of();
         for (String tag : tags) {
             tagRegistry.addListingToTag(tag, listing);
+        }
+    }
+
+    /**
+     * Associates a set of tags with a property preference.
+     *
+     * @param tags The tags to associate.
+     * @param preference The property preference to associate with.
+     */
+    public void addPreferenceToTags(Set<String> tags, PropertyPreference preference) {
+        requireNonNull(tags);
+        TagRegistry tagRegistry = TagRegistry.of();
+        for (String tag : tags) {
+            tagRegistry.addPropertyPreferenceToTag(tag, preference);
         }
     }
 

@@ -10,13 +10,14 @@ public class TagTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Tag(null, new ArrayList<>()));
+        assertThrows(NullPointerException.class, () -> new Tag(null, new ArrayList<>(), new ArrayList<>()));
     }
 
     @Test
     public void constructor_invalidTagName_throwsIllegalArgumentException() {
         String invalidTagName = "";
-        assertThrows(IllegalArgumentException.class, () -> new Tag(invalidTagName, new ArrayList<>()));
+        assertThrows(IllegalArgumentException.class, () -> new Tag(invalidTagName, new ArrayList<>(),
+                new ArrayList<>()));
     }
 
     @Test

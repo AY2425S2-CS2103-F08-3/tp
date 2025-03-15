@@ -9,6 +9,7 @@ import javafx.collections.ObservableMap;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.listing.Listing;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PropertyPreference;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -84,7 +85,7 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
-    /** Returns an unmodifiable view of the filtered Listing list */
+    /** Returns an unmodifiable view of the filtered listing list*/
     ObservableList<Listing> getFilteredListingList();
 
     /** Returns an unmodifiable view of the filtered tag list*/
@@ -101,6 +102,8 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredListingList(Predicate<Listing> predicate);
+
+
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
@@ -121,4 +124,5 @@ public interface Model {
 
     void addListingToTags(Set<String> tags, Listing listing);
 
+    void addPreferenceToTags(Set<String> tags, PropertyPreference preference);
 }

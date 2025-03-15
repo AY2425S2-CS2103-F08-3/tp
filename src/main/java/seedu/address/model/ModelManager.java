@@ -15,6 +15,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.listing.Listing;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PropertyPreference;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -155,11 +156,10 @@ public class ModelManager implements Model {
         addressBook.addListingToTags(tags, listing);
     }
 
-    //=========== Filtered Tag List Accessors =============================================================
-
     @Override
-    public ObservableMap<String, Tag> getFilteredTagList() {
-        return filteredTags;
+    public void addPreferenceToTags(Set<String> tags, PropertyPreference preference) {
+        requireNonNull(tags);
+        addressBook.addPreferenceToTags(tags, preference);
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -182,6 +182,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Listing> getFilteredListingList() {
         return filteredListings;
+    }
+
+    @Override
+    public ObservableMap<String, Tag> getFilteredTagList() {
+        return filteredTags;
     }
 
     @Override
