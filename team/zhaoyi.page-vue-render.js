@@ -8,6 +8,6 @@ with(this){return _c('div',{attrs:{"id":"app"}},[_c('header',{attrs:{"sticky":""
 with(this){return _c('div',{attrs:{"id":"content-wrapper"}},[_c('h3',{attrs:{"id":"project-matchestate"}},[_v("Project: MatchEstate"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#project-matchestate","onclick":"event.stopPropagation()"}})]),_v(" "),_c('p',[_v("MatchEstate is a desktop address book application used for practicing Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.\nGiven below are my contributions to the project.")])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Thu, 20 Mar 2025, 16:00:30 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Thu, 20 Mar 2025, 17:45:36 GMT+8]")])])])}
 }];
   
