@@ -31,6 +31,7 @@ import seedu.address.logic.commands.ListListingCommand;
 import seedu.address.logic.commands.ListPersonCommand;
 import seedu.address.logic.commands.ListTagCommand;
 import seedu.address.logic.commands.OverwritePreferenceTagCommand;
+import seedu.address.logic.commands.SearchPropertyByTagCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -132,6 +133,9 @@ public class AddressBookParser {
 
         case OverwritePreferenceTagCommand.COMMAND_WORD:
             return new OverwritePreferenceTagCommandParser().parse(arguments);
+
+        case SearchPropertyByTagCommand.COMMAND_WORD:
+            return new SearchPropertyByTagCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
