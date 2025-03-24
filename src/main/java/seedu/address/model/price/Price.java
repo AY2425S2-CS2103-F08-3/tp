@@ -27,13 +27,9 @@ public class Price {
      * @param price A valid price.
      */
     public Price(String price) {
-        if (price == null) {
-            this.price = Float.parseFloat(null);
-        } else {
-            requireNonNull(price);
-            checkArgument(isValidPrice(price), MESSAGE_CONSTRAINTS);
-            this.price = Float.parseFloat(price);
-        }
+        requireNonNull(price);
+        checkArgument(isValidPrice(price), MESSAGE_CONSTRAINTS);
+        this.price = Float.parseFloat(price);
     }
 
     /**

@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.COMPARATOR_SHOW_ALL_LISTINGS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_LISTINGS;
 
 import seedu.address.model.Model;
@@ -22,6 +23,7 @@ public class ListListingCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredListingList(PREDICATE_SHOW_ALL_LISTINGS);
+        model.updateSortedFilteredListingList(COMPARATOR_SHOW_ALL_LISTINGS);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

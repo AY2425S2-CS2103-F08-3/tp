@@ -46,7 +46,7 @@ public class DeleteOwnerCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<Listing> lastShownList = model.getFilteredListingList();
+        List<Listing> lastShownList = model.getSortedFilteredListingList();
         if (targetListingIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX);
         }

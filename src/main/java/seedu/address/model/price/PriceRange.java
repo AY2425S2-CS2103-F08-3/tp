@@ -95,8 +95,10 @@ public class PriceRange {
     public boolean doPriceRangeOverlap(PriceRange otherPriceRange) {
         requireNonNull(otherPriceRange);
 
-        boolean isLowerBoundWithinRange = this.isPriceWithinRange(otherPriceRange.lowerBoundPrice);
-        boolean isUpperBoundWithinRange = this.isPriceWithinRange(otherPriceRange.upperBoundPrice);
+        boolean isLowerBoundWithinRange = otherPriceRange.lowerBoundPrice == null
+                || this.isPriceWithinRange(otherPriceRange.lowerBoundPrice);
+        boolean isUpperBoundWithinRange = otherPriceRange.upperBoundPrice == null
+                || this.isPriceWithinRange(otherPriceRange.upperBoundPrice);
 
         return isLowerBoundWithinRange || isUpperBoundWithinRange;
     }

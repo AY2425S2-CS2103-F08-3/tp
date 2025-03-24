@@ -38,6 +38,9 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of listings */
     ObservableList<Listing> getFilteredListingList();
 
+    /** Returns an unmodifiable view of the sorted filtered list of listings */
+    ObservableList<Listing> getSortedFilteredListingList();
+
     /** Returns an unmodifiable view of the filtered list of tags */
     ObservableList<Tag> getFilteredTagList();
 
@@ -55,4 +58,5 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
 }

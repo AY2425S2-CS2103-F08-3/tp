@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.listing.Listing;
@@ -29,6 +31,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Listing> filteredListings;
+    private final SortedList<Listing> sortedFilteredListings;
     private final FilteredList<Tag> filteredTags;
 
     /**
@@ -43,6 +46,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredListings = new FilteredList<>(this.addressBook.getListingList());
+        sortedFilteredListings = new SortedList<>(this.filteredListings);
+        updateSortedFilteredListingList(COMPARATOR_SHOW_ALL_LISTINGS);
 
         // Convert ObservableMap values to ObservableList
         ObservableMap<String, Tag> tagMap = this.addressBook.getTagList();
@@ -157,6 +162,8 @@ public class ModelManager implements Model {
     public void addListing(Listing listing) {
         requireNonNull(listing);
         addressBook.addListing(listing);
+        updateFilteredListingList(PREDICATE_SHOW_ALL_LISTINGS);
+        updateSortedFilteredListingList(COMPARATOR_SHOW_ALL_LISTINGS);
     }
 
     @Override
@@ -207,6 +214,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Listing> getSortedFilteredListingList() {
+        return sortedFilteredListings;
+    }
+
+    @Override
     public ObservableList<Tag> getFilteredTagList() {
         return filteredTags;
     }
@@ -215,6 +227,12 @@ public class ModelManager implements Model {
     public void updateFilteredListingList(Predicate<Listing> predicate) {
         requireNonNull(predicate);
         filteredListings.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateSortedFilteredListingList(Comparator<Listing> comparator) {
+        requireNonNull(comparator);
+        sortedFilteredListings.setComparator(comparator);
     }
 
     @Override
