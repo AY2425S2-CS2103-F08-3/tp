@@ -3,31 +3,41 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
+skinparam linetype ortho
 
 Package Model as ModelPackage <<Rectangle>>{
 Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
 Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
 Class "<<interface>>\nModel" as Model
+
 Class AddressBook
 Class ModelManager
 Class UserPrefs
 
 Class UniquePersonList
 Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
+Class PropertyPreference
+
+Class TagRegistry
 Class Tag
 
-Class I #FFFFFF
+Class UniqueListingList
+Class Listing
+Class PriceRange
+
+Class A #FFFFFF
+Class B #FFFFFF
+Class C #FFFFFF
 }
 
 Class HiddenOutside #FFFFFF
+Class DOutside #FFFFFF
+Class EOutside #FFFFFF
+
 HiddenOutside ..> Model
 
+' Core interfaces
 AddressBook .up.|> ReadOnlyAddressBook
-
 ModelManager .up.|> Model
 Model .right.> ReadOnlyUserPrefs
 Model .left.> ReadOnlyAddressBook
@@ -35,20 +45,43 @@ ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
+' Unique Lists
 AddressBook *--> "1" UniquePersonList
+AddressBook *--> "1" UniqueListingList
+AddressBook *--> "1" TagRegistry
+
+' Person
 UniquePersonList --> "~* all" Person
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+Person "1" *-right-> "*" PropertyPreference
 
-Person -[hidden]up--> I
-UniquePersonList -[hidden]right-> I
+' Listing
+UniqueListingList ---> "all ~* " Listing
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+' Tag
+TagRegistry ----> "all ~* " Tag
 
-ModelManager --> "~* filtered" Person
+' Associations
+Listing "~*" <-> "specification ~* " Tag
+Tag "~* criteria" <-up-> "~*" PropertyPreference
+Person "owner ~*" <-left-> "~*" Listing
+Listing "1" -down-> "1" PriceRange
+PropertyPreference "1" -right-> "1" PriceRange
+
+' Filtering
+ModelManager ------> "filtered ~* " Tag
+ModelManager --> "filtered ~*" Person
+ModelManager --> "filtered ~*" Listing
+
+' Hidden associations for formatting and tidiness
+TagRegistry -[hidden]right-> UniquePersonList
+B -[hidden]up-> ModelManager
+UniquePersonList -[hidden]up-> EOutside
+TagRegistry -[hidden]up-> DOutside
+UniqueListingList -[hidden]up->AddressBook
+UniquePersonList -[hidden]up-> ModelManager
+TagRegistry -[hidden]up-> ModelManager
+Person -[hidden]up--> A
+C -[hidden]up-> Listing
+PriceRange -[hidden]left->C
+
 @enduml

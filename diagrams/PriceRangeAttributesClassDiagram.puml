@@ -1,0 +1,29 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+skinparam linetype ortho
+
+Package Price_Range_Attribute_Classes as ModelPackage <<Rectangle>>{
+
+Class Price
+
+Class A #FFFFFF
+Class B #FFFFFF
+Class C #FFFFFF
+}
+
+Class PriceRange
+
+' Price Range
+PriceRange "1" *-down--> "lower bound 0..1" Price
+PriceRange "1" *-up--> "0..1 upper bound" Price
+
+' Hidden associations for formatting and tidiness
+A -[hidden]right-> PriceRange
+A -[hidden]up-> Price
+B -[hidden]left-> Price
+C -[hidden]up-> Price
+
+@enduml

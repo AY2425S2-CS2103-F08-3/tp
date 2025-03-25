@@ -1,0 +1,18 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+skinparam linetype ortho
+
+Package Tag_Attribute_Classes as ModelPackage <<Rectangle>>{
+
+Class TagName
+}
+
+Class Tag
+
+' Tag
+Tag "1" *-right--> "1" TagName
+
+@enduml

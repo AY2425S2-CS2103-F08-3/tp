@@ -1,0 +1,32 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+skinparam linetype ortho
+
+Package Listing_Attribute_Classes as ModelPackage <<Rectangle>>{
+
+Class PostalCode
+Class UnitNumber
+Class HouseNumber
+Class PropertyName
+
+Class A #FFFFFF
+}
+
+Class Listing
+
+' Listing
+Listing "1" *-left--> "1" PostalCode
+Listing "1" *-left--> "0..1" PropertyName
+Listing "1" *-left--> "0..1" UnitNumber
+Listing "1" *-left--> "0..1" HouseNumber
+
+' Hidden associations for formatting and tidiness
+PostalCode -[hidden]down-> HouseNumber
+HouseNumber -[hidden]down-> UnitNumber
+UnitNumber -[hidden]down-> PropertyName
+A -[hidden]left--> HouseNumber
+
+@enduml

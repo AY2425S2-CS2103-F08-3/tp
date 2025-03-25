@@ -1,0 +1,29 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+skinparam linetype ortho
+
+Package Person_Attribute_Classes as ModelPackage <<Rectangle>>{
+
+Class Name
+Class Email
+Class Phone
+
+Class A #FFFFFF
+}
+
+Class Person
+
+' Person
+Person "1" *-left--> "1" Name
+Person "1" *-left--> "1" Email
+Person "1" *-left--> "1" Phone
+
+' Hidden associations for formatting and tidiness
+A -[hidden]right-> Person
+Name -[hidden]down-> Email
+Email -[hidden]down-> Phone
+
+@enduml
