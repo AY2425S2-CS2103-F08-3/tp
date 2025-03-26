@@ -1,0 +1,133 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":EditTagCommandParser" as EditTagCommandParser LOGIC_COLOR
+participant "e:EditTagCommand" as EditTagCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "model:Model" as Model MODEL_COLOR
+participant "nt:Tag" as nTag MODEL_COLOR
+participant "t:Tag" as Tag MODEL_COLOR
+participant "l:Listing" as Listing MODEL_COLOR
+participant "pref:PropertyPreferences" as Pref MODEL_COLOR
+end box
+
+[-> LogicManager : execute("editTag t/hdb nt/condo")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("editTag t/hdb nt/condo")
+activate AddressBookParser
+
+create EditTagCommandParser
+AddressBookParser -> EditTagCommandParser
+activate EditTagCommandParser
+
+EditTagCommandParser --> AddressBookParser
+deactivate EditTagCommandParser
+
+AddressBookParser -> EditTagCommandParser : parse("t/hdb nt/condo")
+activate EditTagCommandParser
+
+create EditTagCommand
+EditTagCommandParser -> EditTagCommand
+activate EditTagCommand
+
+EditTagCommand --> EditTagCommandParser : e
+deactivate EditTagCommand
+
+EditTagCommandParser --> AddressBookParser : e
+deactivate EditTagCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+EditTagCommandParser -[hidden]-> AddressBookParser
+destroy EditTagCommandParser
+
+AddressBookParser --> LogicManager : e
+deactivate AddressBookParser
+
+LogicManager -> EditTagCommand : execute(m)
+activate EditTagCommand
+
+EditTagCommand -> Model : getTag("hdb")
+activate Model
+
+Model --> EditTagCommand : t
+deactivate Model
+
+EditTagCommand -> Tag : getListings()
+activate Tag
+Tag --> EditTagCommand : listings
+deactivate Tag
+
+EditTagCommand -> Tag : getPropertyPreferences()
+activate Tag
+Tag --> EditTagCommand : propertyPreferences
+deactivate Tag
+
+create nTag
+EditTagCommand -> nTag: new Tag("condo", listings, propertyPreferences)
+note right
+If the new tag already exists, an exception is thrown
+end note
+activate nTag
+nTag --> EditTagCommand: nt
+deactivate nTag
+
+loop for each listing associated with t
+EditTagCommand -> Listing : removeTag(t)
+activate Listing
+Listing --> EditTagCommand
+deactivate Listing
+EditTagCommand -> Listing : addTag(nt)
+activate Listing
+Listing --> EditTagCommand
+deactivate Listing
+EditTagCommand -> Model : setListing(listing, listing)
+activate Model
+Model --> EditTagCommand
+deactivate Model
+end loop
+
+loop for each property preference associated with t
+EditTagCommand -> Pref : removeTag(t)
+activate Pref
+Pref --> EditTagCommand
+deactivate Pref
+EditTagCommand --> Pref : addTag(nt)
+activate Pref
+Pref --> EditTagCommand
+deactivate Pref
+EditTagCommand -> Pref : getPerson()
+activate Pref
+Pref --> EditTagCommand : person
+deactivate Pref
+EditTagCommand -> Model : setPerson(person, person)
+activate Model
+Model --> EditTagCommand
+deactivate Model
+end loop
+
+EditTagCommand -> Model: setTag(t, nt)
+activate Model
+
+Model --> EditTagCommand
+deactivate Model
+
+create CommandResult
+EditTagCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditTagCommand
+deactivate CommandResult
+
+EditTagCommand --> LogicManager : r
+deactivate EditTagCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
