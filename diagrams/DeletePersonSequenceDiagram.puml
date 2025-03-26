@@ -1,0 +1,113 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":DeletePersonCommandParser" as DeletePersonCommandParser LOGIC_COLOR
+participant "d:DeletePersonCommand" as DeletePersonCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant "t:Tag" as Tag MODEL_COLOR
+participant "l:Listing" as Listing MODEL_COLOR
+participant "p:Person" as Person MODEL_COLOR
+end box
+
+[-> LogicManager : execute("deletePerson 1")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("deletePerson 1")
+activate AddressBookParser
+
+create DeletePersonCommandParser
+AddressBookParser -> DeletePersonCommandParser
+activate DeletePersonCommandParser
+
+DeletePersonCommandParser --> AddressBookParser
+deactivate DeletePersonCommandParser
+
+AddressBookParser -> DeletePersonCommandParser : parse("1")
+activate DeletePersonCommandParser
+
+create DeletePersonCommand
+DeletePersonCommandParser -> DeletePersonCommand
+activate DeletePersonCommand
+
+DeletePersonCommand --> DeletePersonCommandParser :
+deactivate DeletePersonCommand
+
+DeletePersonCommandParser --> AddressBookParser : d
+deactivate DeletePersonCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+DeletePersonCommandParser -[hidden]-> AddressBookParser
+destroy DeletePersonCommandParser
+
+AddressBookParser --> LogicManager : d
+deactivate AddressBookParser
+
+LogicManager -> DeletePersonCommand : execute(m)
+activate DeletePersonCommand
+
+DeletePersonCommand -> Model : getSortedFilteredPersonList()
+activate Model
+Model --> DeletePersonCommand
+deactivate Model
+
+DeletePersonCommand -> Person : getListings()
+activate Person
+Person --> DeletePersonCommand
+deactivate Person
+
+
+loop for each listing associated with personToDelete
+    DeletePersonCommand -> Listing : removeOwner(personToDelete)
+    activate Listing
+    Listing --> DeletePersonCommand
+    deactivate Listing
+    DeletePersonCommand -> Model : setListing(listing, listing)
+    activate Model
+    Model --> DeletePersonCommand
+    deactivate Model
+end loop
+
+DeletePersonCommand -> Person : getPropertyPreferences()
+activate Person
+Person --> DeletePersonCommand
+deactivate Person
+
+loop for each property preference associated with personToDelete
+    loop for each Tag associated with property preference
+        DeletePersonCommand -> Tag : removePropertyPreference(preference)
+        activate Tag
+        Tag --> DeletePersonCommand
+        deactivate Tag
+        DeletePersonCommand -> Model : setTag(tag, tag)
+        activate Model
+        Model --> DeletePersonCommand
+        deactivate Model
+    end loop
+end loop
+
+DeletePersonCommand -> Model : deletePerson(p)
+activate Model
+
+Model --> DeletePersonCommand
+deactivate Model
+
+create CommandResult
+DeletePersonCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> DeletePersonCommand
+deactivate CommandResult
+
+DeletePersonCommand --> LogicManager : r
+deactivate DeletePersonCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
