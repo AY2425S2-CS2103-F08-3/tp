@@ -3,6 +3,7 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor STORAGE_COLOR
 skinparam classBackgroundColor STORAGE_COLOR
+skinparam linetype ortho
 
 package Storage as StoragePackage {
 
@@ -20,6 +21,9 @@ Class JsonAddressBookStorage
 Class JsonSerializableAddressBook
 Class JsonAdaptedPerson
 Class JsonAdaptedTag
+Class JsonAdaptedListing
+Class JsonAdaptedPreference
+Class JsonAdaptedPriceRange
 }
 
 }
@@ -37,7 +41,24 @@ Storage -right-|> AddressBookStorage
 JsonUserPrefsStorage .up.|> UserPrefsStorage
 JsonAddressBookStorage .up.|> AddressBookStorage
 JsonAddressBookStorage ..> JsonSerializableAddressBook
+
 JsonSerializableAddressBook --> "*" JsonAdaptedPerson
-JsonAdaptedPerson --> "*" JsonAdaptedTag
+JsonSerializableAddressBook --> "*" JsonAdaptedListing
+JsonSerializableAddressBook --> "*" JsonAdaptedTag
+
+JsonAdaptedPerson --> "*" JsonAdaptedPreference
+
+JsonAdaptedPreference --> JsonAdaptedPriceRange
+JsonAdaptedPreference --> "*" JsonAdaptedTag
+
+JsonAdaptedListing --> JsonAdaptedPriceRange
+JsonAdaptedListing --> "*" JsonAdaptedTag
+JsonAdaptedListing --> "*" JsonAdaptedPerson
+
+note top of JsonAdaptedListing
+Owners are stored as Strings in JsonAdaptedListing,
+but used to retrieve associated JsonAdaptedPerson objects
+during model conversion.
+end note
 
 @enduml
