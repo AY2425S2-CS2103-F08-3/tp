@@ -1,0 +1,90 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":EditListingCommandParser" as EditListingCommandParser LOGIC_COLOR
+participant "e:EditListingCommand" as EditListingCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "model:Model" as Model MODEL_COLOR
+participant "el:Listing" as el MODEL_COLOR
+end box
+
+[-> LogicManager : execute("editListing 1 pc/123456 hn/45 pr/300000-600000 pn/Sunny Villa")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("editListing 1 pc/123456 hn/45 pr/300000-600000 pn/Sunny Villa")
+activate AddressBookParser
+
+create EditListingCommandParser
+AddressBookParser -> EditListingCommandParser
+activate EditListingCommandParser
+
+EditListingCommandParser --> AddressBookParser
+deactivate EditListingCommandParser
+
+AddressBookParser -> EditListingCommandParser : parse("1 pc/123456 hn/45 pr/300000-600000 pn/Sunny Villa")
+activate EditListingCommandParser
+
+create EditListingCommand
+EditListingCommandParser -> EditListingCommand
+activate EditListingCommand
+
+EditListingCommand --> EditListingCommandParser : e
+deactivate EditListingCommand
+
+EditListingCommandParser --> AddressBookParser : e
+deactivate EditListingCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+EditListingCommandParser -[hidden]-> AddressBookParser
+destroy EditListingCommandParser
+
+AddressBookParser --> LogicManager : e
+deactivate AddressBookParser
+
+LogicManager -> EditListingCommand : execute(m)
+activate EditListingCommand
+
+EditListingCommand -> Model : getSortedFilteredListingList()
+activate Model
+Model --> EditListingCommand : lastShownList
+deactivate Model
+
+EditListingCommand -> EditListingCommand : checkIndexValidity()
+create el
+EditListingCommand -> el: new Listing("123456", "45", ""300000-600000", "Sunny Villa")
+activate el
+el --> EditListingCommand: el
+deactivate el
+
+
+EditListingCommand -> Model : hasListing(el)
+activate Model
+Model --> EditListingCommand : false
+deactivate Model
+
+EditListingCommand -> Model : setListing(targetListing, el)
+activate Model
+
+
+Model --> EditListingCommand
+deactivate Model
+
+create CommandResult
+EditListingCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditListingCommand
+deactivate CommandResult
+
+EditListingCommand --> LogicManager : r
+deactivate EditListingCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
