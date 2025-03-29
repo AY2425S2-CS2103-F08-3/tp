@@ -1,7 +1,8 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static seedu.address.logic.Messages.MESSAGE_ARGUMENTS_EMPTY;
+import static seedu.address.logic.Messages.MESSAGE_ONE_INDEX_EXPECTED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -30,12 +31,9 @@ public class EditPersonCommandParser implements Parser<EditPersonCommand> {
 
         Index index;
 
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
-                    EditPersonCommand.MESSAGE_USAGE), pe);
-        }
+        checkCommandFormat(argMultimap, args);
+
+        index = ParserUtil.parseIndex(argMultimap.getPreamble());
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL);
 
@@ -57,6 +55,20 @@ public class EditPersonCommandParser implements Parser<EditPersonCommand> {
         }
 
         return new EditPersonCommand(index, editPersonDescriptor);
+    }
+
+    private static void checkCommandFormat(ArgumentMultimap argMultimap, String args) throws ParseException {
+        String preamble = argMultimap.getPreamble().trim();
+
+        if (args.trim().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_ARGUMENTS_EMPTY,
+                    EditPersonCommand.MESSAGE_USAGE));
+        }
+
+        if (preamble.isEmpty() || preamble.split("\\s+").length != 1) {
+            throw new ParseException(String.format(MESSAGE_ONE_INDEX_EXPECTED,
+                    EditPersonCommand.MESSAGE_USAGE));
+        }
     }
 
 }

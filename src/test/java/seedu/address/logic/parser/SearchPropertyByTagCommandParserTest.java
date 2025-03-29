@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_SEARCH_PROPERTY_TAG_PREFIX_EMPTY;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
@@ -27,19 +26,21 @@ public class SearchPropertyByTagCommandParserTest {
     @Test
     public void parse_missingPrefixOrRandomInput_showsUsage() {
         String userInput = "random words without prefix";
-        assertParseFailure(parser, userInput, Messages.MESSAGE_SEARCH_PROPERTY_TAG_MISSING_PARAMS);
+        assertParseFailure(parser, userInput, String.format(Messages.MESSAGE_SEARCH_PROPERTY_TAG_MISSING_PARAMS,
+                SearchPropertyByTagCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void parse_blankTagPrefix_failure() {
         String userInput = " t/ ";
-        assertParseFailure(parser, userInput, MESSAGE_SEARCH_PROPERTY_TAG_PREFIX_EMPTY);
+        assertParseFailure(parser, userInput, Tag.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_emptyArguments_showsUsage() {
         String userInput = " ";
-        assertParseFailure(parser, userInput, SearchPropertyByTagCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, userInput, String.format(Messages.MESSAGE_ARGUMENTS_EMPTY,
+                SearchPropertyByTagCommand.MESSAGE_USAGE));
     }
 
     @Test

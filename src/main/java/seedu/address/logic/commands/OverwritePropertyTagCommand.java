@@ -38,10 +38,8 @@ public class OverwritePropertyTagCommand extends Command {
             + "2-toilets " + PREFIX_NEW_TAG + "seaside view " + PREFIX_NEW_TAG + "beach";
 
     public static final String MESSAGE_SUCCESS = "Tag in property%s overwritten with: %s";
-    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.";
-    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.";
-    public static final String MESSAGE_NO_TAGS_SPECIFIED =
-        "At least one [t/TAG] or [nt/NEW_TAG] needs to be specified.";
+    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.\n%s";
+    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.\n%s";
 
     private final Index propertyIndex;
     private final Set<String> tagSet;
@@ -68,17 +66,17 @@ public class OverwritePropertyTagCommand extends Command {
         List<Listing> lastShownList = model.getSortedFilteredListingList();
 
         if (propertyIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
 
         Listing property = lastShownList.get(propertyIndex.getZeroBased());
 
         if (!model.hasTags(tagSet)) {
-            throw new CommandException(MESSAGE_INVALID_TAGS);
+            throw new CommandException(String.format(MESSAGE_INVALID_TAGS, MESSAGE_USAGE));
         }
 
         if (model.hasNewTags(newTagSet)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS, MESSAGE_USAGE));
         }
 
         // Create new tags

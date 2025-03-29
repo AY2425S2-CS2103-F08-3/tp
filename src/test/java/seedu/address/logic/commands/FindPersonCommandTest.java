@@ -54,7 +54,7 @@ public class FindPersonCommandTest {
         Exception exception = assertThrows(CommandException.class, () -> new FindPersonCommand(keywords));
 
         String expectedMessage =
-                "ERROR: Invalid keyword ' '. Keywords can only contain letters, spaces, hyphens, or apostrophes.";
+                String.format("ERROR: Invalid keyword ' '. \n%s", FindPersonCommand.MESSAGE_USAGE);
         assertEquals(expectedMessage, exception.getMessage());
     }
 

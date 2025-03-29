@@ -23,7 +23,7 @@ public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS = "Tags must be between 2 and 30 characters long and can only "
             + "contain letters, numbers, apostrophes, spaces, periods, hyphens, underscores, plus, and ampersands. "
-            + "The tag cannot be blank and must not already exist.";
+            + "The tag cannot be blank and must not already exist (unless for deleting).";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9' ._+&-]{2,30}$";
 
     private static final ObservableMap<String, Tag> activeSearchTags = FXCollections.observableHashMap();

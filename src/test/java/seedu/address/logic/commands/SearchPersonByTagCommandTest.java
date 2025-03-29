@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static seedu.address.logic.Messages.MESSAGE_SEARCH_PERSON_TAG_NOT_FOUND;
+import static seedu.address.logic.Messages.MESSAGE_TAG_DOES_NOT_EXIST;
 
 import java.util.Set;
 
@@ -34,7 +34,8 @@ public class SearchPersonByTagCommandTest {
     public void execute_nonExistentTag_throwsCommandException() {
         SearchPersonByTagCommand command = new SearchPersonByTagCommand(Set.of("nonexistenttag"));
         CommandException thrown = assertThrows(CommandException.class, () -> command.execute(model));
-        assertEquals(String.format(MESSAGE_SEARCH_PERSON_TAG_NOT_FOUND, "nonexistenttag"), thrown.getMessage());
+        assertEquals(String.format(MESSAGE_TAG_DOES_NOT_EXIST, "nonexistenttag",
+                SearchPersonByTagCommand.MESSAGE_USAGE), thrown.getMessage());
     }
 
     @Test

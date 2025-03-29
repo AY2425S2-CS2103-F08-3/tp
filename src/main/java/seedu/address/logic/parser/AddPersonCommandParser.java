@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_ADD_PERSON_PREAMBLE_FOUND;
+import static seedu.address.logic.Messages.MESSAGE_ARGUMENTS_EMPTY;
 import static seedu.address.logic.Messages.MESSAGE_EMAIL_REQUIRED;
 import static seedu.address.logic.Messages.MESSAGE_NAME_REQUIRED;
 import static seedu.address.logic.Messages.MESSAGE_PHONE_REQUIRED;
@@ -34,7 +35,7 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL);
 
-        checkCommandFormat(argMultimap);
+        checkCommandFormat(argMultimap, args);
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
@@ -53,14 +54,18 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
-    private static void checkCommandFormat(ArgumentMultimap argMultimap) throws ParseException {
+    private static void checkCommandFormat(ArgumentMultimap argMultimap, String args) throws ParseException {
         boolean hasName = argMultimap.getValue(PREFIX_NAME).isPresent();
         boolean hasPhone = argMultimap.getValue(PREFIX_PHONE).isPresent();
         boolean hasEmail = argMultimap.getValue(PREFIX_EMAIL).isPresent();
 
-        if (!hasName) {
-            throw new ParseException(String.format(MESSAGE_NAME_REQUIRED,
+        if (args.trim().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_ARGUMENTS_EMPTY,
                     AddPersonCommand.MESSAGE_USAGE));
+        }
+
+        if (!hasName) {
+            throw new ParseException(String.format(MESSAGE_NAME_REQUIRED, AddPersonCommand.MESSAGE_USAGE));
         }
 
         if (!hasPhone) {
@@ -74,7 +79,5 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
         if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_ADD_PERSON_PREAMBLE_FOUND, AddPersonCommand.MESSAGE_USAGE));
         }
-
     }
-
 }

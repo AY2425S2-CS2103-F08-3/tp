@@ -43,14 +43,15 @@ public class SearchPropertyByTagCommand extends Command {
         logger.info("Executing SearchPropertyByTagCommand with tags: " + tagsToSearch);
 
         if (tagsToSearch.isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_SEARCH_PROPERTY_TAG_MISSING_PARAMS);
+            throw new CommandException(String.format(Messages.MESSAGE_SEARCH_PROPERTY_TAG_MISSING_PARAMS,
+                    MESSAGE_USAGE));
         }
 
         // Validate each tag exists
         for (String tagName : tagsToSearch) {
             if (!model.hasTags(Set.of(tagName))) {
                 throw new CommandException(String
-                        .format(Messages.MESSAGE_SEARCH_PROPERTY_TAG_NOT_FOUND, tagName));
+                        .format(Messages.MESSAGE_TAG_DOES_NOT_EXIST, tagName, MESSAGE_USAGE));
             }
         }
 

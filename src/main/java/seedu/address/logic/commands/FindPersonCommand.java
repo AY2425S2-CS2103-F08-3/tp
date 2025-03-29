@@ -23,6 +23,7 @@ public class FindPersonCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all persons whose names match the given keyword(s). "
             + "Keywords must contain only letters, spaces, hyphens, full stops, or apostrophes.\n"
+            + "Every keyword can only start with a letter.\n"
             + "Parameters: " + COMMAND_WORD + " KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " Alex Yeoh";
 
@@ -41,13 +42,13 @@ public class FindPersonCommand extends Command {
     public FindPersonCommand(List<String> keywords) throws CommandException {
         requireNonNull(keywords);
         if (keywords.isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_MISSING_KEYWORD);
+            throw new CommandException(String.format(Messages.MESSAGE_MISSING_KEYWORD, MESSAGE_USAGE));
         }
 
         // Validate each keyword before proceeding
         for (String keyword : keywords) {
             if (!VALID_NAME_PATTERN.matcher(keyword).matches()) {
-                throw new CommandException(String.format(Messages.MESSAGE_INVALID_KEYWORD, keyword));
+                throw new CommandException(String.format(Messages.MESSAGE_INVALID_KEYWORD, keyword, MESSAGE_USAGE));
             }
         }
 

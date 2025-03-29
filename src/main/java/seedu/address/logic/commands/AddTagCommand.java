@@ -27,7 +27,8 @@ public class AddTagCommand extends Command {
             + PREFIX_NEW_TAG + "spacious";
 
     public static final String MESSAGE_SUCCESS = "Tag added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the tags already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the tags already exists in the address book."
+            + "\n%1$s";
 
     private final Set<String> toAdd;
 
@@ -46,7 +47,7 @@ public class AddTagCommand extends Command {
         requireNonNull(model);
 
         if (model.hasTags(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS, MESSAGE_USAGE));
         }
 
         model.addTags(toAdd);

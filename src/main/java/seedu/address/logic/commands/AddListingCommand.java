@@ -49,9 +49,9 @@ public class AddListingCommand extends Command {
             + PREFIX_NEW_TAG + "spacious";
 
     public static final String MESSAGE_SUCCESS = "New listing added: %1$s";
-    public static final String MESSAGE_DUPLICATE_LISTING = "This listing already exists in the address book";
-    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.";
-    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.";
+    public static final String MESSAGE_DUPLICATE_LISTING = "This listing already exists in the address book.\n%1$s";
+    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.\n%1$s";
+    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.\n%1$s";
 
     private final Listing toAdd;
     private final Set<String> tagSet;
@@ -76,15 +76,15 @@ public class AddListingCommand extends Command {
         requireNonNull(model);
 
         if (!model.hasTags(tagSet)) {
-            throw new CommandException(MESSAGE_INVALID_TAGS);
+            throw new CommandException(String.format(MESSAGE_INVALID_TAGS, MESSAGE_USAGE));
         }
 
         if (model.hasNewTags(newTagSet)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS, MESSAGE_USAGE));
         }
 
         if (model.hasListing(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_LISTING);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_LISTING, MESSAGE_USAGE));
         }
 
         model.addTags(newTagSet);

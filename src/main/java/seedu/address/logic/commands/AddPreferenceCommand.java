@@ -44,8 +44,8 @@ public class AddPreferenceCommand extends Command {
             + PREFIX_NEW_TAG + "spacious";
 
     public static final String MESSAGE_SUCCESS = "New property preference added to %1$s";
-    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.";
-    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.";
+    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.%1$s\n";
+    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.%1$s\n";
 
     private final Index index;
     private final PriceRange priceRange;
@@ -76,15 +76,15 @@ public class AddPreferenceCommand extends Command {
 
         List<Person> lastShownList = model.getSortedFilteredPersonList();
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
 
         if (!model.hasTags(tagSet)) {
-            throw new CommandException(MESSAGE_INVALID_TAGS);
+            throw new CommandException(String.format(MESSAGE_INVALID_TAGS, MESSAGE_USAGE));
         }
 
         if (model.hasNewTags(newTagSet)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS, MESSAGE_USAGE));
         }
 
         Person personToAddPreference = lastShownList.get(index.getZeroBased());

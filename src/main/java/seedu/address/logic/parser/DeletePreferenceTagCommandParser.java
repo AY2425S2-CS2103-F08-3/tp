@@ -2,12 +2,11 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_ARGUMENTS_EMPTY;
 import static seedu.address.logic.Messages.MESSAGE_EXPECTED_TWO_INDICES;
-import static seedu.address.logic.Messages.MESSAGE_PREFERENCE_TAG_REQUIRED_FOR_DELETE;
+import static seedu.address.logic.Messages.MESSAGE_PROPERTY_TAG_REQUIRED_FOR_DELETE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeletePreferenceTagCommand;
@@ -31,45 +30,31 @@ public class DeletePreferenceTagCommandParser implements Parser<DeletePreference
         Index preferenceIndex;
 
         checkCommandFormat(argMultimap, args);
+        List<Index> multipleIndices = ParserUtil.parseMultipleIndices(argMultimap.getPreamble());
+        personIndex = multipleIndices.get(0);
+        preferenceIndex = multipleIndices.get(1);
+        Set<String> tags = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        try {
-            List<Index> multipleIndices = ParserUtil.parseMultipleIndices(argMultimap.getPreamble());
-            if (multipleIndices.size() != 2) {
-                throw new ParseException(String.format(MESSAGE_EXPECTED_TWO_INDICES,
-                        DeletePreferenceTagCommand.MESSAGE_USAGE));
-            }
-            personIndex = multipleIndices.get(0);
-            preferenceIndex = multipleIndices.get(1);
+        return new DeletePreferenceTagCommand(personIndex, preferenceIndex, tags);
 
-            // Extract tags
-            Set<String> tags = argMultimap.getAllValues(PREFIX_TAG)
-                    .stream()
-                    .map(String::trim)
-                    .collect(Collectors.toSet());
-
-            // Validate at least one tag is provided
-            if (tags.isEmpty()) {
-                throw new ParseException(String.format(MESSAGE_PREFERENCE_TAG_REQUIRED_FOR_DELETE,
-                        DeletePreferenceTagCommand.MESSAGE_USAGE));
-            }
-
-            return new DeletePreferenceTagCommand(personIndex, preferenceIndex, tags);
-
-        } catch (ParseException pe) {
-            throw new ParseException(pe.getMessage());
-        }
 
     }
 
     private static void checkCommandFormat(ArgumentMultimap argMultimap, String args) throws ParseException {
         String preamble = argMultimap.getPreamble();
+        boolean hasTags = !(argMultimap.getAllValues(PREFIX_TAG).isEmpty());
 
         if (args.trim().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_ARGUMENTS_EMPTY,
                     DeletePreferenceTagCommand.MESSAGE_USAGE));
         }
 
-        if (preamble.isEmpty()) {
+        if (!hasTags) {
+            throw new ParseException(String.format(MESSAGE_PROPERTY_TAG_REQUIRED_FOR_DELETE,
+                    DeletePreferenceTagCommand.MESSAGE_USAGE));
+        }
+
+        if (preamble.isEmpty() || preamble.split("\\s+").length != 2) {
             throw new ParseException(String.format(MESSAGE_EXPECTED_TWO_INDICES,
                     DeletePreferenceTagCommand.MESSAGE_USAGE));
         }

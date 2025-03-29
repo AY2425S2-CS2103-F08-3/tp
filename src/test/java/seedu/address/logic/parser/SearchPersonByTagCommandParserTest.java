@@ -30,7 +30,7 @@ public class SearchPersonByTagCommandParserTest {
     @Test
     public void parse_missingTagValue_throwsParseException() {
         ParseException thrown = assertThrows(ParseException.class, () -> parser.parse(" t/"));
-        assertEquals(Messages.MESSAGE_SEARCH_PERSON_TAG_PREFIX_EMPTY, thrown.getMessage());
+        assertEquals(Tag.MESSAGE_CONSTRAINTS, thrown.getMessage());
     }
 
     @Test
@@ -42,10 +42,12 @@ public class SearchPersonByTagCommandParserTest {
     @Test
     public void parse_missingPrefixOrEmpty_throwsParseException() {
         ParseException thrown = assertThrows(ParseException.class, () -> parser.parse("random input"));
-        assertEquals(Messages.MESSAGE_SEARCH_PERSON_TAG_MISSING_PARAMS, thrown.getMessage());
+        assertEquals(String.format(Messages.MESSAGE_SEARCH_PERSON_TAG_MISSING_PARAMS,
+                SearchPersonByTagCommand.MESSAGE_USAGE), thrown.getMessage());
 
         ParseException thrownEmpty = assertThrows(ParseException.class, () -> parser.parse(""));
-        assertEquals(SearchPersonByTagCommand.MESSAGE_USAGE, thrownEmpty.getMessage());
+        assertEquals(String.format(Messages.MESSAGE_ARGUMENTS_EMPTY, SearchPersonByTagCommand.MESSAGE_USAGE),
+                thrownEmpty.getMessage());
     }
 
     @Test

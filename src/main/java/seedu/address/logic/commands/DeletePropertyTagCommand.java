@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,6 @@ import seedu.address.model.Model;
 import seedu.address.model.listing.Listing;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.TagRegistry;
-import seedu.address.model.tag.exceptions.TagNotFoundException;
 
 /**
  * Deletes {@code Tag}(s) from a {@code Listing} identified using it's displayed index in the address book.
@@ -53,10 +53,7 @@ public class DeletePropertyTagCommand extends Command {
         List<Listing> lastShownList = model.getSortedFilteredListingList();
 
         if (propertyIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX);
-        }
-        if (tagsToDelete.isEmpty() || tagsToDelete.stream().anyMatch(String::isBlank)) {
-            throw new CommandException(Messages.MESSAGE_SEARCH_PROPERTY_TAG_PREFIX_EMPTY);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
 
         Listing listingToEdit = lastShownList.get(propertyIndex.getZeroBased());
@@ -64,22 +61,18 @@ public class DeletePropertyTagCommand extends Command {
         TagRegistry tagRegistry = TagRegistry.of();
         Set<Tag> deletedTags = new HashSet<>();
 
-        // Modify listing and tag registry in place
         for (String tagName : tagsToDelete) {
-            String trimmedTagName = tagName.trim();
-            try {
-                Tag tagToDelete = tagRegistry.get(trimmedTagName);
-                if (!listingToEdit.getTags().contains(tagToDelete)) {
-                    throw new CommandException(String.format(Messages.MESSAGE_TAG_NOT_FOUND, tagName));
-                }
-                deletedTags.add(tagToDelete);
-            } catch (TagNotFoundException e) {
-                throw new CommandException(String.format(Messages.MESSAGE_SEARCH_PROPERTY_TAG_NOT_FOUND, tagName));
+            Tag tag = new Tag(tagName, new ArrayList<>(), new ArrayList<>());
+            if (!tagRegistry.contains(tag)) {
+                throw new CommandException(String.format(Messages.MESSAGE_TAG_DOES_NOT_EXIST, tagName,
+                        MESSAGE_USAGE));
             }
-        }
-
-        if (deletedTags.isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_TAG_NOT_FOUND_IN_PREFERENCE);
+            Tag tagToRemove = tagRegistry.get(tagName);
+            if (!listingToEdit.getTags().contains(tag)) {
+                throw new CommandException(String.format(Messages.MESSAGE_TAG_NOT_FOUND_IN_PROPERTY, tagName,
+                        MESSAGE_USAGE));
+            }
+            deletedTags.add(tagToRemove);
         }
 
         for (Tag tag : deletedTags) {

@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_MISSING_KEYWORD;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,17 +24,20 @@ public class FindPersonCommandParser implements Parser<FindPersonCommand> {
      */
     @Override
     public FindPersonCommand parse(String args) throws ParseException {
-        if (args.trim().isEmpty()) {
-            throw new ParseException("ERROR: Missing parameters. You must provide at least one keyword.");
-        }
-
+        checkCommandFormat(args);
         List<String> keywords = Arrays.stream(args.trim().split("\\s+"))
                 .collect(Collectors.toList());
-
         try {
             return new FindPersonCommand(keywords);
         } catch (CommandException e) {
             throw new ParseException(e.getMessage());
+        }
+    }
+
+    private static void checkCommandFormat(String args) throws ParseException {
+        if (args.trim().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_MISSING_KEYWORD,
+                    FindPersonCommand.MESSAGE_USAGE));
         }
     }
 }

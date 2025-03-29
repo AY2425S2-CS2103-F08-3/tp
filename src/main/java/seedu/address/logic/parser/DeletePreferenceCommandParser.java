@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_ARGUMENTS_EMPTY;
 import static seedu.address.logic.Messages.MESSAGE_EXPECTED_TWO_INDICES;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_PERSON_OR_PREFERENCE_DISPLAYED_INDEX;
 
 import java.util.List;
 
@@ -22,24 +22,24 @@ public class DeletePreferenceCommandParser implements Parser<DeletePreferenceCom
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeletePreferenceCommand parse(String args) throws ParseException {
-        List<Index> multipleIndices;
-        try {
-            multipleIndices = ParserUtil.parseMultipleIndices(args);
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_PERSON_OR_PREFERENCE_DISPLAYED_INDEX,
-                    DeletePreferenceCommand.MESSAGE_USAGE),
-                    pe);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args);
+        checkCommandFormat(argMultimap, args);
+        List<Index> multipleIndices = ParserUtil.parseMultipleIndices(argMultimap.getPreamble());
+        return new DeletePreferenceCommand(multipleIndices.get(0), multipleIndices.get(1));
+
+    }
+
+    private static void checkCommandFormat(ArgumentMultimap argMultimap, String args) throws ParseException {
+        String preamble = argMultimap.getPreamble().trim();
+
+        if (args.trim().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_ARGUMENTS_EMPTY,
+                    DeletePreferenceCommand.MESSAGE_USAGE));
         }
 
-        try {
-            if (multipleIndices.size() != 2) {
-                throw new ParseException("Expected 2 indices");
-            }
-            return new DeletePreferenceCommand(multipleIndices.get(0), multipleIndices.get(1));
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_EXPECTED_TWO_INDICES, DeletePreferenceCommand.MESSAGE_USAGE),
-                    pe);
+        if (preamble.isEmpty() || preamble.split("\\s+").length != 2) {
+            throw new ParseException(String.format(MESSAGE_EXPECTED_TWO_INDICES,
+                    DeletePreferenceCommand.MESSAGE_USAGE));
         }
     }
 

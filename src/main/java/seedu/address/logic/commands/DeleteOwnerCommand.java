@@ -48,13 +48,13 @@ public class DeleteOwnerCommand extends Command {
 
         List<Listing> lastShownList = model.getSortedFilteredListingList();
         if (targetListingIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
         Listing targetListing = lastShownList.get(targetListingIndex.getZeroBased());
 
         List<Person> targetOwnerList = targetListing.getOwners();
         if (targetOwnerIndex.getZeroBased() >= targetOwnerList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_OWNER_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_OWNER_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
         Person ownerToDelete = targetOwnerList.get(targetOwnerIndex.getZeroBased());
 

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.FindPersonCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 
@@ -17,7 +18,7 @@ public class FindPersonCommandParserTest {
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        String expectedMessage = "ERROR: Missing parameters. You must provide at least one keyword.";
+        String expectedMessage = String.format(Messages.MESSAGE_MISSING_KEYWORD, FindPersonCommand.MESSAGE_USAGE);
         assertParseFailure(parser, "     ", expectedMessage);
     }
 

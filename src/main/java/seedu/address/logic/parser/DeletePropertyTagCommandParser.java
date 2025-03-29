@@ -1,11 +1,11 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_INDEX_REQUIRED;
+import static seedu.address.logic.Messages.MESSAGE_ARGUMENTS_EMPTY;
+import static seedu.address.logic.Messages.MESSAGE_ONE_INDEX_EXPECTED;
 import static seedu.address.logic.Messages.MESSAGE_PROPERTY_TAG_REQUIRED_FOR_DELETE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeletePropertyTagCommand;
@@ -26,41 +26,31 @@ public class DeletePropertyTagCommandParser implements Parser<DeletePropertyTagC
     public DeletePropertyTagCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TAG);
 
-        // Ensure arguments are not empty
-        if (args.trim().isEmpty()) {
-            throw new ParseException(String.format(
-                    seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    DeletePropertyTagCommand.MESSAGE_USAGE));
-        }
-
         String preamble = argMultimap.getPreamble();
+        checkCommandFormat(argMultimap, args);
+        Index index = ParserUtil.parseIndex(preamble);
+        Set<String> tags = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        // Ensure an index is provided
-        if (preamble.isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INDEX_REQUIRED,
+        return new DeletePropertyTagCommand(index, tags);
+    }
+
+    private static void checkCommandFormat(ArgumentMultimap argMultimap, String args) throws ParseException {
+        String preamble = argMultimap.getPreamble().trim();
+        boolean hasTags = !(argMultimap.getAllValues(PREFIX_TAG).isEmpty());
+
+        if (args.trim().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_ARGUMENTS_EMPTY,
                     DeletePropertyTagCommand.MESSAGE_USAGE));
         }
 
-        try {
-            // Extract index from the preamble
-            Index index = ParserUtil.parseIndex(preamble);
+        if (!hasTags) {
+            throw new ParseException(String.format(MESSAGE_PROPERTY_TAG_REQUIRED_FOR_DELETE,
+                    DeletePropertyTagCommand.MESSAGE_USAGE));
+        }
 
-            // Extract tags
-            Set<String> tags = argMultimap.getAllValues(PREFIX_TAG)
-                    .stream()
-                    .map(String::trim)
-                    .collect(Collectors.toSet());
-
-            // Validate at least one tag is provided and no tag is blank
-            if (tags.isEmpty() || tags.stream().anyMatch(String::isBlank)) {
-                throw new ParseException(String.format(MESSAGE_PROPERTY_TAG_REQUIRED_FOR_DELETE,
-                        DeletePropertyTagCommand.MESSAGE_USAGE));
-            }
-
-            return new DeletePropertyTagCommand(index, tags);
-
-        } catch (ParseException pe) {
-            throw new ParseException(pe.getMessage());
+        if (preamble.isEmpty() || preamble.split("\\s+").length != 1) {
+            throw new ParseException(String.format(MESSAGE_ONE_INDEX_EXPECTED,
+                    DeletePropertyTagCommand.MESSAGE_USAGE));
         }
     }
 }

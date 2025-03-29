@@ -55,7 +55,7 @@ public class MatchListingCommand extends Command {
 
         List<Listing> lastShownList = model.getSortedFilteredListingList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
 
         Listing toMatch = lastShownList.get(targetIndex.getZeroBased());

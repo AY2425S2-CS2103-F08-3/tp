@@ -59,7 +59,7 @@ public class MatchPersonCommand extends Command {
         Tag.setActiveSearchTags(new ArrayList<>());
 
         if (targetPersonIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
         Person targetPerson = lastShownList.get(targetPersonIndex.getZeroBased());
 
@@ -67,7 +67,8 @@ public class MatchPersonCommand extends Command {
                 .stream().filter(PropertyPreference::isFiltered).toList();
 
         if (targetPreferenceIndex.getZeroBased() >= targetPreferenceList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PREFERENCE_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PREFERENCE_DISPLAYED_INDEX,
+                    MESSAGE_USAGE));
         }
 
         PropertyPreference preferenceToMatch = targetPreferenceList.get(targetPreferenceIndex.getZeroBased());

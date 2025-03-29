@@ -53,7 +53,7 @@ public class DeletePreferenceCommand extends Command {
         List<Person> lastShownList = model.getSortedFilteredPersonList();
 
         if (targetPersonIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
         Person targetPerson = lastShownList.get(targetPersonIndex.getZeroBased());
 
@@ -63,7 +63,8 @@ public class DeletePreferenceCommand extends Command {
                 .toList();
 
         if (targetPreferenceIndex.getZeroBased() >= filteredPreferences.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PREFERENCE_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PREFERENCE_DISPLAYED_INDEX,
+                    MESSAGE_USAGE));
         }
 
         // Delete the preference from the full preference list using object reference

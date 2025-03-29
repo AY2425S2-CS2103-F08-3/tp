@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX;
+import static seedu.address.logic.Messages.MESSAGE_ARGUMENTS_EMPTY;
+import static seedu.address.logic.Messages.MESSAGE_ONE_INDEX_EXPECTED;
 import static seedu.address.logic.Messages.MESSAGE_TAG_OR_NEW_TAG_REQUIRED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -27,13 +28,9 @@ public class AddListingTagCommandParser implements Parser<AddListingTagCommand> 
                 ArgumentTokenizer.tokenize(args, PREFIX_TAG, PREFIX_NEW_TAG);
         Index index;
 
-        checkCommandFormat(argMultimap);
+        checkCommandFormat(argMultimap, args);
 
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(MESSAGE_INVALID_LISTING_DISPLAYED_INDEX);
-        }
+        index = ParserUtil.parseIndex(argMultimap.getPreamble());
 
         Set<String> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Set<String> newTagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_NEW_TAG));
@@ -41,13 +38,24 @@ public class AddListingTagCommandParser implements Parser<AddListingTagCommand> 
         return new AddListingTagCommand(index, tagList, newTagList);
     }
 
-    private static void checkCommandFormat(ArgumentMultimap argMultimap) throws ParseException {
+    private static void checkCommandFormat(ArgumentMultimap argMultimap, String args) throws ParseException {
+        String preamble = argMultimap.getPreamble().trim();
         boolean hasTags = !(argMultimap.getAllValues(PREFIX_TAG).isEmpty());
         boolean hasNewTags = !(argMultimap.getAllValues(PREFIX_NEW_TAG).isEmpty());
         boolean hasCombinedTags = hasTags || hasNewTags;
 
+        if (args.trim().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_ARGUMENTS_EMPTY,
+                    AddListingTagCommand.MESSAGE_USAGE));
+        }
+
         if (!hasCombinedTags) {
             throw new ParseException(String.format(MESSAGE_TAG_OR_NEW_TAG_REQUIRED,
+                    AddListingTagCommand.MESSAGE_USAGE));
+        }
+
+        if (preamble.isEmpty() || preamble.split("\\s+").length != 1) {
+            throw new ParseException(String.format(MESSAGE_ONE_INDEX_EXPECTED,
                     AddListingTagCommand.MESSAGE_USAGE));
         }
 

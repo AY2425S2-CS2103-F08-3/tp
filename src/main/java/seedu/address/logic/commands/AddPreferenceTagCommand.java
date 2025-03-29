@@ -39,11 +39,11 @@ public class AddPreferenceTagCommand extends Command {
             + PREFIX_NEW_TAG + "family-friendly "
             + PREFIX_NEW_TAG + "spacious";
 
-    public static final String MESSAGE_SUCCESS = "Adds tags to preferences %1$s";
-    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.";
-    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.";
+    public static final String MESSAGE_SUCCESS = "Adds tags to preferences: %1$s";
+    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.\n%1$s";
+    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.\n%1$s";
     public static final String MESSAGE_DUPLICATE_TAGS_IN_LISTING = "At least one of the "
-            + "tags given already exist in the preference.";
+            + "tags given already exist in the preference.\n%1$s";
 
     private final Index targetPersonIndex;
     private final Index targetPreferenceIndex;
@@ -74,8 +74,9 @@ public class AddPreferenceTagCommand extends Command {
         List<Person> lastShownList = model.getSortedFilteredPersonList();
 
         if (targetPersonIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
+
         Person targetPerson = lastShownList.get(targetPersonIndex.getZeroBased());
 
         // Filter preferences according to active filter tags
@@ -84,17 +85,18 @@ public class AddPreferenceTagCommand extends Command {
                 .toList();
 
         if (targetPreferenceIndex.getZeroBased() >= targetPreferenceList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PREFERENCE_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PREFERENCE_DISPLAYED_INDEX,
+                    MESSAGE_USAGE));
         }
 
         PropertyPreference preference = targetPreferenceList.get(targetPreferenceIndex.getZeroBased());
 
         if (!model.hasTags(tagSet)) {
-            throw new CommandException(MESSAGE_INVALID_TAGS);
+            throw new CommandException(String.format(MESSAGE_INVALID_TAGS, MESSAGE_USAGE));
         }
 
         if (model.hasNewTags(newTagSet)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS, MESSAGE_USAGE));
         }
 
         model.addTags(newTagSet);
@@ -107,7 +109,7 @@ public class AddPreferenceTagCommand extends Command {
         for (String tagName : tagNames) {
             Tag tag = tagRegistry.get(tagName);
             if (preference.getTags().contains(tag)) {
-                throw new CommandException(MESSAGE_DUPLICATE_TAGS_IN_LISTING);
+                throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS_IN_LISTING, MESSAGE_USAGE));
             }
             tags.add(tag);
         }

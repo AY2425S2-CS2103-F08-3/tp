@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeletePropertyTagCommand;
+import seedu.address.model.tag.Tag;
 
 /**
  * Unit tests for DeletePropertyTagCommandParser.
@@ -34,9 +35,10 @@ public class DeletePropertyTagCommandParserTest {
     @Test
     public void parse_missingIndex_failure() {
         String userInput = PREFIX_TAG + "pet-friendly";
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeletePropertyTagCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_PROPERTY_TAG_REQUIRED_FOR_DELETE,
+                DeletePropertyTagCommand.MESSAGE_USAGE);
 
-        assertParseFailure(parser, userInput, "Index is not a non-zero unsigned integer.");
+        assertParseFailure(parser, userInput, expectedMessage);
     }
 
     @Test
@@ -59,7 +61,6 @@ public class DeletePropertyTagCommandParserTest {
     @Test
     public void parse_blankTag_failure() {
         String userInput = "3 " + PREFIX_TAG + " "; // empty tag value
-        assertParseFailure(parser, userInput, String.format(MESSAGE_PROPERTY_TAG_REQUIRED_FOR_DELETE,
-                DeletePropertyTagCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, userInput, Tag.MESSAGE_CONSTRAINTS);
     }
 }

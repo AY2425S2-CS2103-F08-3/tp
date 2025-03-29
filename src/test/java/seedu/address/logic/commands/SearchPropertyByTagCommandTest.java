@@ -88,8 +88,8 @@ public class SearchPropertyByTagCommandTest {
         SearchPropertyByTagCommand command = new SearchPropertyByTagCommand(tagsToSearch);
 
         CommandException thrown = assertThrows(CommandException.class, () -> command.execute(model));
-        assertEquals(String.format(Messages.MESSAGE_SEARCH_PROPERTY_TAG_NOT_FOUND,
-                "nonexistenttag"), thrown.getMessage());
+        assertEquals(String.format(Messages.MESSAGE_TAG_DOES_NOT_EXIST,
+                "nonexistenttag", SearchPropertyByTagCommand.MESSAGE_USAGE), thrown.getMessage());
     }
 
     @Test
@@ -108,6 +108,7 @@ public class SearchPropertyByTagCommandTest {
         SearchPropertyByTagCommand command = new SearchPropertyByTagCommand(Set.of());
 
         CommandException thrown = assertThrows(CommandException.class, () -> command.execute(model));
-        assertEquals(Messages.MESSAGE_SEARCH_PROPERTY_TAG_MISSING_PARAMS, thrown.getMessage());
+        assertEquals(String.format(Messages.MESSAGE_SEARCH_PROPERTY_TAG_MISSING_PARAMS,
+                SearchPropertyByTagCommand.MESSAGE_USAGE), thrown.getMessage());
     }
 }

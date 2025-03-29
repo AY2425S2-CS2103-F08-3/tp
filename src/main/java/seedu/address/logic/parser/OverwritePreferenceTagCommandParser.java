@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_ARGUMENTS_EMPTY;
 import static seedu.address.logic.Messages.MESSAGE_EXPECTED_TWO_INDICES;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_PERSON_OR_PREFERENCE_DISPLAYED_INDEX;
 import static seedu.address.logic.Messages.MESSAGE_TAG_OR_NEW_TAG_REQUIRED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -32,27 +31,11 @@ public class OverwritePreferenceTagCommandParser implements Parser<OverwritePref
         Index preferenceIndex;
 
         checkCommandFormat(argMultimap, args);
-        List<Index> multipleIndices;
 
-        try {
-            multipleIndices = ParserUtil.parseMultipleIndices(argMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_PERSON_OR_PREFERENCE_DISPLAYED_INDEX,
-                    OverwritePreferenceTagCommand.MESSAGE_USAGE),
-                    pe);
-        }
+        List<Index> multipleIndices = ParserUtil.parseMultipleIndices(argMultimap.getPreamble());
 
-        try {
-            if (multipleIndices.size() != 2) {
-                throw new ParseException("Expected 2 indices");
-            }
-            personIndex = multipleIndices.get(0);
-            preferenceIndex = multipleIndices.get(1);
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_EXPECTED_TWO_INDICES,
-                    OverwritePreferenceTagCommand.MESSAGE_USAGE),
-                    pe);
-        }
+        personIndex = multipleIndices.get(0);
+        preferenceIndex = multipleIndices.get(1);
 
         Set<String> tagSet = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Set<String> newTagSet = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_NEW_TAG));
@@ -61,7 +44,7 @@ public class OverwritePreferenceTagCommandParser implements Parser<OverwritePref
     }
 
     private static void checkCommandFormat(ArgumentMultimap argMultimap, String args) throws ParseException {
-        String preamble = argMultimap.getPreamble();
+        String preamble = argMultimap.getPreamble().trim();
         boolean hasTags = !(argMultimap.getAllValues(PREFIX_TAG).isEmpty());
         boolean hasNewTags = !(argMultimap.getAllValues(PREFIX_NEW_TAG).isEmpty());
         boolean hasCombinedTags = hasTags || hasNewTags;
@@ -76,7 +59,7 @@ public class OverwritePreferenceTagCommandParser implements Parser<OverwritePref
                     OverwritePreferenceTagCommand.MESSAGE_USAGE));
         }
 
-        if (preamble.isEmpty()) {
+        if (preamble.isEmpty() || preamble.split("\\s+").length != 2) {
             throw new ParseException(String.format(MESSAGE_EXPECTED_TWO_INDICES,
                     OverwritePreferenceTagCommand.MESSAGE_USAGE));
         }

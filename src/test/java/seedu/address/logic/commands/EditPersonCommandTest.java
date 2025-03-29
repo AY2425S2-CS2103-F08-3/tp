@@ -89,7 +89,8 @@ public class EditPersonCommandTest {
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstPerson).build();
         EditPersonCommand editPersonCommand = new EditPersonCommand(INDEX_SECOND_PERSON, descriptor);
 
-        assertCommandFailure(editPersonCommand, model, EditPersonCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editPersonCommand, model, String.format(EditPersonCommand.MESSAGE_DUPLICATE_PERSON,
+                EditPersonCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -101,7 +102,8 @@ public class EditPersonCommandTest {
         EditPersonCommand editPersonCommand = new EditPersonCommand(INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder(personInList).build());
 
-        assertCommandFailure(editPersonCommand, model, EditPersonCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editPersonCommand, model, String.format(EditPersonCommand.MESSAGE_DUPLICATE_PERSON,
+                EditPersonCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -110,7 +112,8 @@ public class EditPersonCommandTest {
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditPersonCommand editPersonCommand = new EditPersonCommand(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editPersonCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editPersonCommand, model, String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                EditPersonCommand.MESSAGE_USAGE));
     }
 
     /**
@@ -127,7 +130,8 @@ public class EditPersonCommandTest {
         EditPersonCommand editPersonCommand = new EditPersonCommand(outOfBoundIndex,
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
-        assertCommandFailure(editPersonCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editPersonCommand, model, String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                EditPersonCommand.MESSAGE_USAGE));
     }
 
     @Test

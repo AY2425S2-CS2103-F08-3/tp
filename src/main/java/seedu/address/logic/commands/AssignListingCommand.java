@@ -25,7 +25,8 @@ public class AssignListingCommand extends Command {
             + "Example: " + COMMAND_WORD + " 2 1";
 
     public static final String MESSAGE_SUCCESS = "Listing %1$s";
-    public static final String MESSAGE_OWNER_ALREADY_IN_LISTING = "This person is already an owner of this listing";
+    public static final String MESSAGE_OWNER_ALREADY_IN_LISTING = "This person is already an owner of this listing"
+            + "\n%1$s";
 
     private final Index personIndex;
     private final Index listingIndex;
@@ -47,18 +48,18 @@ public class AssignListingCommand extends Command {
 
         List<Person> lastShownPersonList = model.getSortedFilteredPersonList();
         if (personIndex.getZeroBased() >= lastShownPersonList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
         Person personToAddListing = lastShownPersonList.get(personIndex.getZeroBased());
 
         List<Listing> lastShownListingList = model.getSortedFilteredListingList();
         if (listingIndex.getZeroBased() >= lastShownListingList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX);
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_LISTING_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
         Listing listing = lastShownListingList.get(listingIndex.getZeroBased());
 
         if (listing.getOwners().contains(personToAddListing)) {
-            throw new CommandException(MESSAGE_OWNER_ALREADY_IN_LISTING);
+            throw new CommandException(String.format(MESSAGE_OWNER_ALREADY_IN_LISTING, MESSAGE_USAGE));
         }
 
         listing.addOwner(personToAddListing);
