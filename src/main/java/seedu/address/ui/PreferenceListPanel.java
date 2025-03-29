@@ -41,7 +41,7 @@ public class PreferenceListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PreferenceListCard(preference, getIndex() + 1).getRoot());
+                setGraphic(new PreferenceCard(preference, getIndex() + 1).getRoot());
             }
         }
     }

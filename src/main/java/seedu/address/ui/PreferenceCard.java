@@ -12,7 +12,7 @@ import seedu.address.model.person.PropertyPreference;
 /**
  * An UI component that displays information of a {@code Person}.
  */
-public class PreferenceListCard extends UiPart<Region> {
+public class PreferenceCard extends UiPart<Region> {
 
     private static final String FXML = "PreferenceListCard.fxml";
 
@@ -41,7 +41,7 @@ public class PreferenceListCard extends UiPart<Region> {
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
-    public PreferenceListCard(PropertyPreference propertyPreference, int displayedIndex) {
+    public PreferenceCard(PropertyPreference propertyPreference, int displayedIndex) {
         super(FXML);
 
         this.propertyPreference = propertyPreference;

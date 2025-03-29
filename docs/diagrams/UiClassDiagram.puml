@@ -3,6 +3,7 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
+skinparam lineType ortho
 
 package UI <<Rectangle>>{
 Class "<<interface>>\nUi" as Ui
@@ -11,8 +12,19 @@ Class UiManager
 Class MainWindow
 Class HelpWindow
 Class ResultDisplay
+
 Class PersonListPanel
 Class PersonCard
+Class PreferenceListPanel
+Class PreferenceCard
+
+Class ListingListPanel
+Class ListingCard
+Class OwnerListPanel
+Class OwnerCard
+
+
+Class TagListPanel
 Class StatusBarFooter
 Class CommandBox
 }
@@ -30,30 +42,70 @@ HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
 UiManager -down-> "1" MainWindow
+
 MainWindow *-down->  "1" CommandBox
 MainWindow *-down-> "1" ResultDisplay
+
 MainWindow *-down-> "1" PersonListPanel
+MainWindow *-down-> "1" ListingListPanel
+MainWindow *-down-> "1" TagListPanel
+
 MainWindow *-down-> "1" StatusBarFooter
+
 MainWindow --> "0..1" HelpWindow
 
 PersonListPanel -down-> "*" PersonCard
+PersonCard -down-> "1" PreferenceListPanel
+PersonCard .right.> Model
+PreferenceListPanel -down-> "*" PreferenceCard
+PreferenceCard .right.> Model
 
-MainWindow -left-|> UiPart
+ListingListPanel -down-> "*" ListingCard
+ListingCard -down-> "1" OwnerListPanel
+ListingCard .right.> Model
+
+OwnerListPanel -down-> "*" OwnerCard
+OwnerCard .right.> Model
+
+TagListPanel .right.> Model
+
+MainWindow -down-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 PersonListPanel --|> UiPart
 PersonCard --|> UiPart
+
+PreferenceListPanel --|> UiPart
+PreferenceCard --|> UiPart
+
+ListingListPanel --|> UiPart
+ListingCard --|> UiPart
+
+OwnerListPanel --|> UiPart
+OwnerCard --|> UiPart
+
+TagListPanel --|> UiPart
+
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
+HelpWindow ..> Logic
 
-PersonCard ..> Model
-UiManager -right-> Logic
-MainWindow -left-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
-CommandBox -[hidden]left- ResultDisplay
+
+UiManager -up-> Logic
+MainWindow -up-> Logic
+
+
+TagListPanel -[hidden]right- PersonListPanel
+
+HelpWindow -[hidden]left- ResultDisplay
+
+CommandBox -[hidden]right- PersonListPanel
+CommandBox -[hidden]right- TagListPanel
+CommandBox -[hidden]right- ListingListPanel
+
+
 ResultDisplay -[hidden]left- StatusBarFooter
 
 MainWindow -[hidden]-|> UiPart
