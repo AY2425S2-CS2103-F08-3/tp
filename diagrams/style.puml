@@ -48,6 +48,11 @@ skinparam Class {
     FontName Arial
 }
 
+skinparam classAttributeFontColor {
+    FontColor #FFFFFF
+    FontSize 15
+}
+
 skinparam Actor {
     BorderColor USER_COLOR
     Color USER_COLOR
@@ -73,7 +78,8 @@ skinparam ParticipantPadding 10
 skinparam Shadowing false
 skinparam DefaultTextAlignment center
 skinparam packageStyle Rectangle
+skinparam classAttributeIconSize 0
 
 hide footbox
-hide members
+hide empty members
 hide circle
