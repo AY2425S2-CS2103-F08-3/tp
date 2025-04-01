@@ -12,13 +12,16 @@ end box
 
 box Model MODEL_COLOR_T1
 participant "model:Model" as Model MODEL_COLOR
+participant "person:Person" as person MODEL_COLOR
+participant "tag:Tag" as tag MODEL_COLOR
+participant "target:Listing" as target MODEL_COLOR
 participant "el:Listing" as el MODEL_COLOR
 end box
 
-[-> LogicManager : execute("editListing 1 pc/123456 hn/45 pr/300000-600000 pn/Sunny Villa")
+[-> LogicManager : execute("editListing 1 n/Greens Vale")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("editListing 1 pc/123456 hn/45 pr/300000-600000 pn/Sunny Villa")
+LogicManager -> AddressBookParser : parseCommand("editListing 1 n/Greens Vale")
 activate AddressBookParser
 
 create EditListingCommandParser
@@ -28,7 +31,7 @@ activate EditListingCommandParser
 EditListingCommandParser --> AddressBookParser
 deactivate EditListingCommandParser
 
-AddressBookParser -> EditListingCommandParser : parse("1 pc/123456 hn/45 pr/300000-600000 pn/Sunny Villa")
+AddressBookParser -> EditListingCommandParser : parse("1 h/45 n/Greens Vale")
 activate EditListingCommandParser
 
 create EditListingCommand
@@ -52,23 +55,78 @@ activate EditListingCommand
 
 EditListingCommand -> Model : getSortedFilteredListingList()
 activate Model
-Model --> EditListingCommand : lastShownList
+Model --> EditListingCommand : listingList
 deactivate Model
 
-EditListingCommand -> EditListingCommand : checkIndexValidity()
+EditListingCommand -> target : getPostalCode()
+activate target
+target --> EditListingCommand : postalCode
+deactivate target
+
+EditListingCommand -> target : getPriceRange()
+activate target
+target --> EditListingCommand : priceRange
+deactivate target
+
+EditListingCommand -> target : getOwners()
+activate target
+target --> EditListingCommand : owners
+deactivate target
+
+EditListingCommand -> target : getTags()
+activate target
+target --> EditListingCommand : tags
+deactivate target
+
+EditListingCommand -> target : getAvailability()
+activate target
+target --> EditListingCommand : availability
+deactivate target
+
 create el
-EditListingCommand -> el: new Listing("123456", "45", ""300000-600000", "Sunny Villa")
+EditListingCommand -> el: new Listing(postalCode,"45", priceRange, "Sunny Villa", tags, owners, availability)
+note left
+If the new listing already exists, an exception is thrown
+end note
 activate el
 el --> EditListingCommand: el
 deactivate el
 
+loop for each owner associated with target
+EditListingCommand -> person : removeListing(target)
+activate person
+person --> EditListingCommand
+deactivate person
 
-EditListingCommand -> Model : hasListing(el)
+EditListingCommand -> person : addListing(el)
+activate person
+person --> EditListingCommand
+deactivate person
+
+EditListingCommand -> Model: setPerson(owner, owner)
 activate Model
-Model --> EditListingCommand : false
+Model --> EditListingCommand
 deactivate Model
+end loop
 
-EditListingCommand -> Model : setListing(targetListing, el)
+loop for each tag associated with target
+EditListingCommand -> tag : removeListing(target)
+activate tag
+tag --> EditListingCommand
+deactivate tag
+
+EditListingCommand -> tag : addListing(el)
+activate tag
+tag --> EditListingCommand
+deactivate tag
+
+EditListingCommand -> Model: setTag(tag, tag)
+activate Model
+Model --> EditListingCommand
+deactivate Model
+end loop
+
+EditListingCommand -> Model : setListing(target, el)
 activate Model
 
 

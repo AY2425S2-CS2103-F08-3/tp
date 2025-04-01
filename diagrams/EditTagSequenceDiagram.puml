@@ -11,7 +11,7 @@ participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant "model:Model" as Model MODEL_COLOR
+participant "m:Model" as Model MODEL_COLOR
 participant "nt:Tag" as nTag MODEL_COLOR
 participant "t:Tag" as Tag MODEL_COLOR
 participant "l:Listing" as Listing MODEL_COLOR
@@ -98,7 +98,7 @@ EditTagCommand -> Pref : removeTag(t)
 activate Pref
 Pref --> EditTagCommand
 deactivate Pref
-EditTagCommand --> Pref : addTag(nt)
+EditTagCommand -> Pref : addTag(nt)
 activate Pref
 Pref --> EditTagCommand
 deactivate Pref
