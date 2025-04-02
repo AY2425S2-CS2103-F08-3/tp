@@ -82,12 +82,12 @@ public class SearchOwnerListingCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DeletePersonCommand)) {
+        if (!(other instanceof SearchOwnerListingCommand)) {
             return false;
         }
 
-        SearchOwnerListingCommand otherDeletePersonCommand = (SearchOwnerListingCommand) other;
-        return targetIndex.equals(otherDeletePersonCommand.targetIndex);
+        SearchOwnerListingCommand otherSearchOwnerListingCommand = (SearchOwnerListingCommand) other;
+        return targetIndex.equals(otherSearchOwnerListingCommand.targetIndex);
     }
 
     @Override

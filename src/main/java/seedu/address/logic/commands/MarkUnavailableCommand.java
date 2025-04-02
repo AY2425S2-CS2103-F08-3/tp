@@ -51,4 +51,24 @@ public class MarkUnavailableCommand extends Command {
         return new CommandResult(String.format(MESSAGE_MARK_UNAVAILABLE_SUCCESS,
                 Messages.format(toMarkUnavailable.getAvailability(), toMarkUnavailable)));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof MarkUnavailableCommand)) {
+            return false;
+        }
+
+        MarkUnavailableCommand otherMarkUnavailableCommand = (MarkUnavailableCommand) other;
+        return targetIndex.equals(otherMarkUnavailableCommand.targetIndex);
+    }
+
+    @Override
+    public String toString() {
+        return MarkUnavailableCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
+    }
 }

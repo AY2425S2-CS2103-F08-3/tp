@@ -1,0 +1,144 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":MergeTagCommandParser" as MergeTagCommandParser LOGIC_COLOR
+participant "e:MergeTagCommand" as MergeTagCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant "ot:Tag" as Tag MODEL_COLOR
+participant "t:Tag" as Tag2 MODEL_COLOR
+participant "l:Listing" as Listing MODEL_COLOR
+participant "pref:PropertyPreferences" as Pref MODEL_COLOR
+end box
+
+[-> LogicManager : execute("mergeTag t/pet-friendly ot/pet-allowed")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("mergeTag t/pet-friendly ot/pet-allowed")
+activate AddressBookParser
+
+create MergeTagCommandParser
+AddressBookParser -> MergeTagCommandParser
+activate MergeTagCommandParser
+
+MergeTagCommandParser --> AddressBookParser
+deactivate MergeTagCommandParser
+
+AddressBookParser -> MergeTagCommandParser : parse("t/pet-friendly ot/pet-allowed")
+activate MergeTagCommandParser
+
+create MergeTagCommand
+MergeTagCommandParser -> MergeTagCommand
+activate MergeTagCommand
+
+MergeTagCommand --> MergeTagCommandParser : e
+deactivate MergeTagCommand
+
+MergeTagCommandParser --> AddressBookParser : e
+deactivate MergeTagCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+MergeTagCommandParser -[hidden]-> AddressBookParser
+destroy MergeTagCommandParser
+
+AddressBookParser --> LogicManager : e
+deactivate AddressBookParser
+
+LogicManager -> MergeTagCommand : execute(m)
+activate MergeTagCommand
+
+MergeTagCommand -> Model : getTag("pet-allowed")
+activate Model
+
+Model --> MergeTagCommand : ot
+deactivate Model
+
+MergeTagCommand -> Tag : getListings()
+activate Tag
+Tag --> MergeTagCommand : listings
+deactivate Tag
+
+MergeTagCommand -> Tag : getPropertyPreferences()
+activate Tag
+Tag --> MergeTagCommand : propertyPreferences
+deactivate Tag
+
+MergeTagCommand -> Model : getTag("pet-friendly")
+activate Model
+
+Model --> MergeTagCommand : t
+deactivate Model
+
+loop for each listing associated with ot
+MergeTagCommand -> Listing : removeTag(ot)
+activate Listing
+Listing --> MergeTagCommand
+deactivate Listing
+
+MergeTagCommand -> Listing : addTag(t)
+activate Listing
+Listing --> MergeTagCommand
+deactivate Listing
+
+MergeTagCommand -> Tag2 : addListing(listing)
+activate Tag2
+Tag2 --> MergeTagCommand
+deactivate Tag2
+
+MergeTagCommand -> Model : setListing(listing, listing)
+activate Model
+Model --> MergeTagCommand
+deactivate Model
+end loop
+
+loop for each property preference associated with ot
+MergeTagCommand -> Pref : removeTag(ot)
+activate Pref
+Pref --> MergeTagCommand
+deactivate Pref
+
+MergeTagCommand -> Pref : addTag(t)
+activate Pref
+Pref --> MergeTagCommand
+deactivate Pref
+
+MergeTagCommand -> Tag2 : addPreference(pref)
+activate Tag2
+Tag2 --> MergeTagCommand
+deactivate Tag2
+
+MergeTagCommand -> Pref : getPerson()
+activate Pref
+Pref --> MergeTagCommand : person
+deactivate Pref
+MergeTagCommand -> Model : setPerson(person, person)
+activate Model
+Model --> MergeTagCommand
+deactivate Model
+end loop
+
+MergeTagCommand -> Model: deleteTag(ot)
+activate Model
+
+Model --> MergeTagCommand
+deactivate Model
+
+create CommandResult
+MergeTagCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> MergeTagCommand
+deactivate CommandResult
+
+MergeTagCommand --> LogicManager : r
+deactivate MergeTagCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

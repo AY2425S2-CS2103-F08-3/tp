@@ -51,4 +51,24 @@ public class MarkAvailableCommand extends Command {
         return new CommandResult(String.format(MESSAGE_MARK_AVAILABLE_SUCCESS,
                 Messages.format(toMarkAvailable.getAvailability(), toMarkAvailable)));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof MarkAvailableCommand)) {
+            return false;
+        }
+
+        MarkAvailableCommand otherMarkAvailableCommand = (MarkAvailableCommand) other;
+        return targetIndex.equals(otherMarkAvailableCommand.targetIndex);
+    }
+
+    @Override
+    public String toString() {
+        return MarkAvailableCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
+    }
 }

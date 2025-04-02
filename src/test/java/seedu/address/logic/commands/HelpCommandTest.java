@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code HelpCommand}.
+ */
 public class HelpCommandTest {
     private Model model = new ModelManager();
     private Model expectedModel = new ModelManager();

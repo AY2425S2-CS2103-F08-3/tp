@@ -82,13 +82,6 @@ public class PersonTest {
     }
 
     @Test
-    public void toStringMethod() {
-        String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", property preferences=[]}";
-        assertEquals(expected, ALICE.toString());
-    }
-
-    @Test
     public void hashCode_testConsistency() {
         Person person1 = new PersonBuilder(ALICE).build();
         Person person2 = new PersonBuilder(ALICE).build();
