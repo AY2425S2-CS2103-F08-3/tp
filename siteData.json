@@ -54,6 +54,7 @@
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-edit-tag-command": "[Proposed] Edit tag command",
         "proposed-edit-listing-command": "[Proposed] Edit listing command",
+        "proposed-merge-tag-command": "[Proposed] Merge tag command",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
