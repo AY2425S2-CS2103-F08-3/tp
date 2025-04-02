@@ -377,7 +377,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3b. New tags to be created already exist.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Existing tags specified do not  exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])]),_v(" "),_c('li',[_c('p',[_v("4b. No existing and new tags specified.")]),_v(" "),_c('p',[_v("Use case resumes at 8.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("3a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3b. The specified property preference is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("3b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3c. New tags to be created already exist.")]),_v(" "),_c('ul',[_c('li',[_v("3c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("3d. Existing tags specified do not  exist.")]),_v(" "),_c('ul',[_c('li',[_v("3d1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. No new tags to be created.")]),_v(" "),_c('p',[_v("Use case resumes at 6.")])]),_v(" "),_c('li',[_c('p',[_v("4b. No existing and new tags specified.")]),_v(" "),_c('p',[_v("Use case resumes at 8.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc09-add-tag-to-property-preference"}},[_v("Use case: UC09 - Add tag to property preference"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc09-add-tag-to-property-preference","onclick":"event.stopPropagation()"}})])}
@@ -407,7 +407,7 @@ with(this){return _c('p',[_v("Similar to "),_c('u',[_v("UC09")]),_v(" but refere
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list listings(UC02).")])]),_v(" "),_c('li',[_c('p',[_v("User requests to list tags(UC03).")])]),_v(" "),_c('li',[_c('p',[_v("User requests to add a tag to a listing.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate creates new tags.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate adds the tags to the listing.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of the tags.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list listings(UC02)")]),_v(".")])]),_v(" "),_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("list tags(UC03)")]),_v(".")])]),_v(" "),_c('li',[_c('p',[_v("User requests to add new and existing tags to a listing.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate creates new tags.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate adds the tags to the listing.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate updates the usage number of the tags.")])]),_v(" "),_c('li',[_c('p',[_v("MatchEstate displays a success message.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
@@ -545,7 +545,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to "),_c('u',[_v("
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2b. The expected edited person already exists.")]),_v(" "),_c('ul',[_c('li',[_v("2b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2b. The specified edited person is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2c. The expected edited person already exists.")]),_v(" "),_c('ul',[_c('li',[_v("2c1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc19-mark-a-listing-as-unavailable"}},[_v("Use case: UC19 - Mark a listing as unavailable"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc19-mark-a-listing-as-unavailable","onclick":"event.stopPropagation()"}})])}
@@ -692,7 +692,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list "),_c('u',
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2b. The property preference index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2b1. MatchEstate shows an error message.")])])]),_v(" "),_c('li',[_c('p',[_v("4a. No listings match the specified property preference.")]),_v(" "),_c('ul',[_c('li',[_v("4a1. MatchEstate displays a message indicating no results.")])]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The person index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2a1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2b. The property preference index is invalid.")]),_v(" "),_c('ul',[_c('li',[_v("2b1. MatchEstate shows an error message.")])]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("4a. No listings match the specified property preference.")]),_v(" "),_c('ul',[_c('li',[_v("4a1. MatchEstate displays a message indicating no results.")])]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"use-case-uc28-match-for-listing"}},[_v("Use case: UC28 - Match for listing"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-case-uc28-match-for-listing","onclick":"event.stopPropagation()"}})])}
@@ -776,6 +776,6 @@ with(this){return _c('h3',{attrs:{"id":"saving-data"}},[_v("Saving data"),_c('a'
 with(this){return _c('ol',[_c('li',[_c('p',[_v("Dealing with missing/corrupted data files")]),_v(" "),_c('ol',[_c('li',[_c('em',[_v("{explain how to simulate a missing/corrupted file, and the expected behavior}")])])])]),_v(" "),_c('li',[_c('p',[_c('em',[_v("{ more test cases …​ }")])])])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Wed, 2 Apr 2025, 17:56:22 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Wed, 2 Apr 2025, 17:58:46 GMT+8]")])])])}
 }];
   
