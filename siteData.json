@@ -66,8 +66,13 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
-        "saving-data": "Saving data"
+        "adding-a-listing": "Adding a listing",
+        "deleting-a-listing": "Deleting a listing",
+        "adding-a-preference": "Adding a preference",
+        "deleting-a-preference": "Deleting a preference",
+        "adding-a-tag": "Adding a tag",
+        "deleting-a-tag": "Deleting a tag",
+        "matching-a-listing": "Matching a listing"
       },
       "headingKeywords": {}
     },
