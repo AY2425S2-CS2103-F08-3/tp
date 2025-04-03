@@ -133,9 +133,9 @@
         "listing-management-2": "Listing Management",
         "tag-management-2": "Tag Management",
         "preference-management-2": "Preference Management",
-        "property-tag-management": "Property Tag Management",
+        "listings-tag-management": "Listings’ Tag Management",
         "matching-system-2": "Matching System",
-        "owner-management": "Owner Management",
+        "listings-owner-management": "Listings’ Owner Management",
         "faq": "FAQ",
         "known-issues": "Known issues"
       },
