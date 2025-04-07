@@ -3,14 +3,14 @@
   title: ""
 ---
 
-# Match Estate
+# MatchEstate
 
 [![CI Status](https://github.com/AY2425S2-CS2103-F08-3/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2425S2-CS2103-F08-3/tp/actions)
 [![codecov](https://codecov.io/gh/AY2425S2-CS2103-F08-3/tp/graph/badge.svg?token=49RJKE7706)](https://codecov.io/gh/AY2425S2-CS2103-F08-3/tp)
 
 ![MatchEstate](images/CS2103UG/matchEstate.png)
 
-**MatchEstate allows tracking of buyers and sellers easily as well as their preferences and offerings respectively.** It enables fast matching of buyers and sellers. It is tailored for those who prefer CLIs.
+**MatchEstate** is a desktop application tailored for **real estate agents** to efficiently manage their clients — whether they are buyers, sellers, or both. MatchEstate enables fast matching of buyers to suitable listings and vice versa. While it features a graphical interface, the app is optimized for users who prefer fast keyboard-based interactions using a Command Line Interface (CLI).
 
 
 * If you are interested in using MatchEstate, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).

@@ -16,11 +16,10 @@ public class Email {
             + "the parentheses, (" + SPECIAL_CHARACTERS + "). The local-part may not start or end with any special "
             + "characters.\n"
             + "2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels "
-            + "separated by periods.\n"
+            + "separated by periods or hyphens.\n"
             + "The domain name must:\n"
             + "    - end with a domain label at least 2 characters long\n"
-            + "    - have each domain label start and end with alphanumeric characters\n"
-            + "    - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.";
+            + "    - each domain label must contain alphanumeric characters\n";
 
     // alphanumeric and special characters
     private static final String ALPHANUMERIC_NO_UNDERSCORE = "[^\\W_]+"; // alphanumeric characters except underscore
@@ -49,7 +48,15 @@ public class Email {
      * Returns if a given string is a valid email.
      */
     public static boolean isValidEmail(String test) {
-        return test.matches(VALIDATION_REGEX);
+        String[] parts = test.split("@");
+        if (!test.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+        String[] domainParts = parts[1].split("[.-]");
+        if (domainParts[domainParts.length - 1].length() < 2) {
+            return false;
+        }
+        return true;
     }
 
     @Override

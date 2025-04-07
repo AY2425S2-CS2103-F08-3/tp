@@ -257,9 +257,9 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **Planned Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
+This section describes how certain proposed features are to be implemented in future iterations.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -374,6 +374,77 @@ The merge tag command allows users to merge an existing tag into another existin
 <puml src="diagrams/MergeTagSequenceDiagram.puml" alt="MergeTagSequenceDiagram" />
 
 The associated Listings and PropertyPreferences from the tag that was merged from will also be merged into the other existing tag.
+
+## Enhancements still in consideration:
+These are features still in consideration about whether to be implemented.
+
+### \[Consideration\] Clear confirmation
+
+#### Design considerations:
+
+**Issue:** Users who are unfamiliar with the command may accidentally delete all their data, as the current clear command deletes everything without any confirmation.
+
+* **Current implementation:** Clear without confirmation.
+  * Pros: Fulfils project’s recommendation for one shot commands.
+  * Cons: Users unfamiliar with the command may accidentally delete their data.
+
+* **Alternative 1:** Clear with confirmation window pop-up.
+  * Pros: Users are warned that the command deletes all data.
+  * Cons: Violates project’s “typing preferred” constraint.
+
+* **Alternative 2:** Clear with confirmation command.
+  * Pros: Users are warned through the command response that the command deletes all data.
+  * Cons:  Does not fulfill project’s recommendation for one shot commands. Hard to implement as it subverts the current `logic` sequence diagram by having multiple commands that need to be created and executed.
+
+### \[Consideration\] Command word length
+
+#### Design considerations:
+
+**Issue:** Experienced users may prefer shorter command words. However, there are multiple variations for shorthands for a word, for example `Preference` has the common shorthand of `Pref`, `Pf` and `Pfr`. Thus, using shorthands across the current number of commands may increase the initial learning curve of the application.
+
+* **Current implementation:** Commands not using shorthands.
+  * Pros: Easy for new users to pick up. Intention of the command is clear.
+  * Cons: Can be quite lengthy to type.
+
+* **Alternative 1:** Commands using shorthands.
+  * Pros: Faster to type.
+  * Cons: Harder for new users to pick up.
+
+* **Alternative 2:** Rename command.
+  * Pros: Gives the users an option to modify the command words as they see fit to something easier for them to remember. Commands can still match the dynamically generated help window.
+  * Cons: Returning users may struggle to relearn the commands as it will no longer match the user guide.
+
+### \[Consideration\] Space separated search person keyword
+
+#### Design considerations:
+
+**Issue:** Users may intend to search by a space separated keyword “Alex Yeoh” instead of 2 keywords “Alex” and “Yeoh”.
+
+* **Current implementation:** Keywords do not include space.
+  * Pros: Allows users to specify multiple keywords at once.
+  * Cons: Prevents users from searching by space separated keywords.
+
+* **Alternative 1:** Keyword includes space.
+  * Pros: Allows users from searching by space separated keywords.
+  * Cons: Prevents users from specifying multiple keywords.
+
+* **Alternative 2:** New command format of `searchPersonName n/Name…`, for example `searchPersonName n/Alex Yeoh n/John Doe`
+  * Pros: Allows users to specify multiple space separated names at once. Prefix tag of `n/` might be more appropriate for such a command.
+  * Cons: Requires significant changes from AB3 legacy code.
+
+### \[Consideration\] Applying multiple search/match filters concurrently
+
+#### Design considerations:
+
+**Issue:** Users may intend to search person by name and then search person by tags concurrently.
+
+* **Current implementation:** Search overwrites other filters.
+  * Pros: Easy to implement. Reduces need to list all before applying a new search on all items.
+  * Cons: Prevents users from filtering by multiple parameters.
+
+* **Alternative 1:** New search does not overwrite previous filters.
+  * Pros: Allows users more control over filtering
+  * Cons: Hard to implement. Creates complex predicates. Requires listing all to apply a new search on all items.
 
 
 --------------------------------------------------------------------------------------------------------------------

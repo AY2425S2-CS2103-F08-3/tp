@@ -29,7 +29,6 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListListingCommand;
 import seedu.address.logic.commands.ListPersonCommand;
-import seedu.address.logic.commands.ListTagCommand;
 import seedu.address.logic.commands.MarkAvailableCommand;
 import seedu.address.logic.commands.MarkUnavailableCommand;
 import seedu.address.logic.commands.MatchListingCommand;
@@ -138,9 +137,6 @@ public class AddressBookParser {
 
         case ListListingCommand.COMMAND_WORD:
             return new ListListingCommand();
-
-        case ListTagCommand.COMMAND_WORD:
-            return new ListTagCommand();
 
         case AddOwnerCommand.COMMAND_WORD:
             return new AddOwnerCommandParser().parse(arguments);

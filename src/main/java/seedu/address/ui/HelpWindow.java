@@ -31,7 +31,6 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListListingCommand;
 import seedu.address.logic.commands.ListPersonCommand;
-import seedu.address.logic.commands.ListTagCommand;
 import seedu.address.logic.commands.MarkAvailableCommand;
 import seedu.address.logic.commands.MarkUnavailableCommand;
 import seedu.address.logic.commands.MatchListingCommand;
@@ -184,7 +183,6 @@ public class HelpWindow extends UiPart<Stage> {
         ArrayList<String[]> helpTexts = new ArrayList<>();
         helpTexts.add(new String[]{ListPersonCommand.COMMAND_WORD, ListPersonCommand.MESSAGE_USAGE});
         helpTexts.add(new String[]{ListListingCommand.COMMAND_WORD, ListListingCommand.MESSAGE_USAGE});
-        helpTexts.add(new String[]{ListTagCommand.COMMAND_WORD, ListTagCommand.MESSAGE_USAGE});
         return helpTexts;
     }
 

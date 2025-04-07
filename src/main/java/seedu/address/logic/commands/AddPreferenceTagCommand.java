@@ -44,7 +44,7 @@ public class AddPreferenceTagCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Adds tags to preferences: %1$s";
     public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.\n%1$s";
     public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.\n%1$s";
-    public static final String MESSAGE_DUPLICATE_TAGS_IN_LISTING = "At least one of the "
+    public static final String MESSAGE_DUPLICATE_TAGS_IN_PREFERENCE = "At least one of the "
             + "tags given already exist in the preference.\n%1$s";
 
     private final Index targetPersonIndex;
@@ -107,7 +107,7 @@ public class AddPreferenceTagCommand extends Command {
         for (String tagName : tagNames) {
             Tag tag = model.getTag(tagName);
             if (preference.getTags().contains(tag)) {
-                throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS_IN_LISTING, MESSAGE_USAGE));
+                throw new CommandException(String.format(MESSAGE_DUPLICATE_TAGS_IN_PREFERENCE, MESSAGE_USAGE));
             }
             tags.add(tag);
         }
