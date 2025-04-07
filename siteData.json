@@ -61,6 +61,7 @@
         "consideration-command-word-length": "[Consideration] Command word length",
         "consideration-space-separated-search-person-keyword": "[Consideration] Space separated search person keyword",
         "consideration-applying-multiple-search-match-filters-concurrently": "[Consideration] Applying multiple search/match filters concurrently",
+        "consideration-filtering-tags-in-tags-list": "[Consideration] Filtering tags in tags list",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
