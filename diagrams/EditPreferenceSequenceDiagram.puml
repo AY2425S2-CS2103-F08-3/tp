@@ -1,0 +1,144 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":EditPreferenceCommandParser" as EditPreferenceCommandParser LOGIC_COLOR
+participant "e:EditPreferenceCommand" as EditPreferenceCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "model:Model" as Model MODEL_COLOR
+participant "person:Person" as person MODEL_COLOR
+participant "pr:PriceRange" as pr MODEL_COLOR
+participant "npr:PriceRange" as npr MODEL_COLOR
+participant "tag:Tag" as tag MODEL_COLOR
+participant "target:PropertyPreference" as target MODEL_COLOR
+participant "epp:PropertyPreference" as epp MODEL_COLOR
+end box
+
+[-> LogicManager : execute("editPreference 1 1 lbp/350000")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("editPreference 1 1 lbp/350000")
+activate AddressBookParser
+
+create EditPreferenceCommandParser
+AddressBookParser -> EditPreferenceCommandParser
+activate EditPreferenceCommandParser
+
+EditPreferenceCommandParser --> AddressBookParser
+deactivate EditPreferenceCommandParser
+
+AddressBookParser -> EditPreferenceCommandParser : parse("1 1 lbp/350000")
+activate EditPreferenceCommandParser
+
+create EditPreferenceCommand
+EditPreferenceCommandParser -> EditPreferenceCommand
+activate EditPreferenceCommand
+
+EditPreferenceCommand --> EditPreferenceCommandParser : e
+deactivate EditPreferenceCommand
+
+EditPreferenceCommandParser --> AddressBookParser : e
+deactivate EditPreferenceCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+EditPreferenceCommandParser -[hidden]-> AddressBookParser
+destroy EditPreferenceCommandParser
+
+AddressBookParser --> LogicManager : e
+deactivate AddressBookParser
+
+LogicManager -> EditPreferenceCommand : execute(m)
+activate EditPreferenceCommand
+
+EditPreferenceCommand -> Model : getSortedFilteredPersonList()
+activate Model
+Model --> EditPreferenceCommand : PersonList
+deactivate Model
+
+EditPreferenceCommand -> person : getPropertyPreferences()
+activate person
+person --> EditPreferenceCommand : preferenceList
+deactivate person
+
+EditPreferenceCommand -> target : getTags()
+activate target
+target --> EditPreferenceCommand : tags
+deactivate target
+
+
+
+EditPreferenceCommand -> target : getPriceRange()
+activate target
+target --> EditPreferenceCommand : priceRange
+deactivate target
+
+EditPreferenceCommand -> pr : getUpperBoundPrice()
+activate pr
+pr --> EditPreferenceCommand : ubp
+deactivate pr
+
+create npr
+EditPreferenceCommand -> npr: new PriceRange(ubp, newPriceRange)
+activate npr
+npr --> EditPreferenceCommand : npr
+deactivate npr
+
+create epp
+EditPreferenceCommand -> epp: new PropertyPreference(npr, tags)
+activate epp
+epp --> EditPreferenceCommand: epp
+deactivate epp
+
+loop for each tag associated with target
+EditPreferenceCommand -> tag : removePropertyPreference(target)
+activate tag
+tag --> EditPreferenceCommand
+deactivate tag
+
+EditPreferenceCommand -> tag : addPropertyPreference(epp)
+activate tag
+tag --> EditPreferenceCommand
+deactivate tag
+
+EditPreferenceCommand -> Model: setTag(tag, tag)
+activate Model
+Model --> EditPreferenceCommand
+deactivate Model
+end loop
+
+EditPreferenceCommand -> person: removePropertyPreference(target)
+activate person
+person --> EditPreferenceCommand
+deactivate person
+
+EditPreferenceCommand -> person: addPropertyPreference(epp)
+activate person
+person --> EditPreferenceCommand
+deactivate person
+
+
+EditPreferenceCommand -> Model : setPerson(person, person)
+activate Model
+
+
+Model --> EditPreferenceCommand
+deactivate Model
+
+create CommandResult
+EditPreferenceCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditPreferenceCommand
+deactivate CommandResult
+
+EditPreferenceCommand --> LogicManager : r
+deactivate EditPreferenceCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

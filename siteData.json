@@ -54,6 +54,7 @@
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-edit-tag-command": "[Proposed] Edit tag command",
         "proposed-edit-listing-command": "[Proposed] Edit listing command",
+        "proposed-edit-preference-command": "[Proposed] Edit Preference command",
         "proposed-merge-tag-command": "[Proposed] Merge tag command",
         "enhancements-still-in-consideration": "Enhancements still in consideration:",
         "consideration-clear-confirmation": "[Consideration] Clear confirmation",
