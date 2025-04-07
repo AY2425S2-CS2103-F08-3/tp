@@ -4,12 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.ScrollPane?>
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <Label styleClass="label-bright" text="Tags:"/>
-    <FlowPane fx:id="tags" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-        <padding>
-            <Insets bottom="5" top="5" left="5" right="5"/>
-        </padding>
-    </FlowPane>
+    <ScrollPane fx:id="tagListView" styleClass="black-scroll-pane" VBox.vgrow="ALWAYS"
+                fitToWidth="true" hbarPolicy="NEVER">
+        <FlowPane fx:id="tags">
+            <padding>
+                <Insets bottom="5" top="5" left="5" right="5"/>
+            </padding>
+        </FlowPane>
+    </ScrollPane>
 </VBox>

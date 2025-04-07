@@ -179,7 +179,7 @@ Opens a second window displaying all the command usages and explaining how to ac
 
 Format: `help`
 
-Result:
+Result for `help`:
 ![help message](images/helpMessage.png)
 
 #### Clearing all data: `clear`
@@ -187,7 +187,7 @@ Clears all entries from the address book.
 
 Format: `clear`
 
-Result:
+Result for `clear`:
 * Before
 <br>![clearBefore](images/CS2103UG/clearBefore.png)
 
@@ -247,9 +247,11 @@ Note on uniquely identifying Person:
 </box>
 
 Examples:
+* `addPerson n/Betty Smith p/+6598274892 e/bettysmith@abc`
+* `addPerson n/Bob Parker p/934 e/bobparker@bom-com`
 * `addPerson n/John Doe p/98765432 e/johnd@example.com`
 
-Result:
+Result for `addPerson n/John Doe p/98765432 e/johnd@example.com`:
 * Before
 <br>![addPersonBefore](images/CS2103UG/addPersonBefore.png)
 
@@ -261,7 +263,7 @@ Shows a list of all persons in the MatchEstate .
 
 Format: `listPerson`
 
-Result:
+Result for `listPerson`:
 * Before
 <br>![listPersonBefore](images/CS2103UG/listPersonBefore.png)
 
@@ -299,9 +301,11 @@ Note on uniquely identifying Person:
 </box>
 
 Examples:
+* `editPerson 1 n/Betty Smith` Edits the name of the 1st person.
 * `editPerson 2 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 2nd person.
+* `editPerson 3 n/Bob Parker p/+6581008383 e/bobparker@example.com` Edits the name, phone number and email address of the 3rd person.
 
-Result:
+Result for `editPerson 2 p/91234567 e/johndoe@example.com`:
 * Before
 <br>![editPersonBefore](images/CS2103UG/editPersonBefore.png)
 
@@ -322,9 +326,11 @@ Input restriction:
 For example, if you perform a `searchListingTag` followed by another `searchOwnerListing`, only the results from the second `searchOwnerListing` will be applied to all data. The filters do not stack.
 
 Examples:
-* `searchPersonName John Doe` returns persons with names matching "John" or "Doe"
+* `searchPersonName John` returns persons with names matching "John".
+* `searchPersonName John Doe` returns persons with names matching "John" or "Doe".
+* `searchPersonName John Doe Bob` returns persons with names matching "John", "Doe" or "Bob".
 
-Result:
+Result for `searchPersonName John Doe`:
 * Before
 <br>![searchPersonNameBefore](images/CS2103UG/searchPersonNameBefore.png)
 
@@ -345,9 +351,10 @@ Input restriction:
 For example, if you perform a `searchListingTag` followed by another `searchOwnerListing`, only the results from the second `searchOwnerListing` will be applied to all data. The filters do not stack.
 
 Example:
-* `searchPersonTag t/gym t/pet-friendly` returns all persons **who have at least one property preference that contains ALL the specified tags (`gym` and `pet-friendly`)**.
+* `searchPersonTag t/gym` returns all persons who have at least one property preference containing the `gym` tag
+* `searchPersonTag t/gym t/pet-friendly` returns all persons who have at least one property preference containing both `gym` and `pet-friendly` tags.
 
-Result:
+Result for `searchPersonTag t/gym t/pet-friendly`:
 * Before
 <br>![searchPersonTagBefore](images/CS2103UG/searchPersonTagBefore.png)
 
@@ -365,7 +372,7 @@ Input restriction:
 Examples:
 * `deletePerson 2` deletes the 2nd person in MatchEstate.
 
-Result:
+Result for `deletePerson 2`:
 * Before
 <br>![deletePersonBefore](images/CS2103UG/deletePersonBefore.png)
 
@@ -393,9 +400,11 @@ Input restriction:
 * `NEW_TAG` tag cannot be blank and must not already exist.
 
 Example:
+* `addListing pc/654321 u/10-12`
 * `addListing pc/654321 h/12 lbp/300000 ubp/600000 n/Sunny Villa t/quiet t/pet-friendly nt/family-friendly nt/spacious`
+* `addListing pc/654321 u/10-12 lbp/30000 nt/spacious`
 
-Result:
+Result for `addListing pc/654321 h/12 lbp/300000 ubp/600000 n/Sunny Villa t/quiet t/pet-friendly nt/family-friendly nt/spacious`:
 * Before
 <br>![addListingBefore](images/CS2103UG/addListingBefore.png)
 
@@ -407,7 +416,7 @@ Shows a list of all property listings.
 
 Format: `listListing`
 
-Result:
+Result for `listListing`:
 * Before
 <br>![listListingBefore](images/CS2103UG/listListingBefore.png)
 
@@ -428,9 +437,10 @@ Input restriction:
 For example, if you perform a `searchListingTag` followed by another `searchOwnerListing`, only the results from the second `searchOwnerListing` will be applied to all data. The filters do not stack.
 
 Example:
+* `searchListingTag t/pet-friendly` 
 * `searchListingTag t/pet-friendly t/pool` returns all listings **that contain ALL the specified tags (`pet-friendly` and `pool`)**.
 
-Result:
+Result for `searchListingTag t/pet-friendly t/pool`:
 * Before
 <br>![searchListingTagBefore](images/CS2103UG/searchListingTagBefore.png)
 
@@ -452,7 +462,7 @@ For example, if you perform a `searchListingTag` followed by another `searchOwne
 Example:
 * `searchOwnerListing 2`
 
-Result:
+Result for `searchOwnerListing 2`:
 * Before
 <br>![searchOwnerListingBefore](images/CS2103UG/searchOwnerListingBefore.png)
 
@@ -470,7 +480,7 @@ Input restriction:
 Example:
 * `markAvailable 1`
 
-Result:
+Result for `markAvailable 1`:
 * Before
   <br>![markAvailableBefore](images/CS2103UG/markAvailableBefore.png)
 
@@ -489,7 +499,7 @@ Input restriction:
 Example:
 * `markUnavailable 2`
 
-Result:
+Result for `markUnavailable 2`:
 * Before
 <br>![markBefore](images/CS2103UG/markBefore.png)
 
@@ -508,7 +518,7 @@ Input restriction:
 Example:
 * `deleteListing 1`
 
-Result:
+Result for `deleteListing 1`:
 * Before
 <br>![deleteListingBefore](images/CS2103UG/deleteListingBefore.png)
 
@@ -527,9 +537,10 @@ Input restriction:
 * `NEW_TAG` tag cannot be blank and must not already exist.
 
 Example:
+* `addTag nt/family-friendly`
 * `addTag nt/elderly-friendly nt/vintage`
 
-Result:
+Result for `addTag nt/elderly-friendly nt/vintage`:
 * Before
 <br>![addTagBefore](images/CS2103UG/addTagBefore.png)
 
@@ -546,9 +557,10 @@ Input restriction:
 * The tag cannot be blank and must already exist.
 
 Example:
+* `deleteTag t/quiet`
 * `deleteTag t/quiet t/pet-friendly`
 
-Result:
+Result for `deleteTag t/quiet t/pet-friendly`:
 * Before
 <br>![deleteTagBefore](images/CS2103UG/deleteTagBefore.png)
 
@@ -570,9 +582,11 @@ Input restriction:
 * `NEW_TAG` tag cannot be blank and must not already exist.
 
 Example:
+* `addPreference 1`
 * `addPreference 2 lbp/300000 ubp/600000 t/quiet t/pet-friendly nt/family-friendly nt/spacious`
+* `addPreference 1 ubp/600000`
 
-Result:
+Result for `addPreference 2 lbp/300000 ubp/600000 t/quiet t/pet-friendly nt/family-friendly nt/spacious`:
 * Before
 <br>![addPreferenceBefore](images/CS2103UG/addPreferenceBefore.png)
 
@@ -591,9 +605,11 @@ Input restriction:
 * `NEW_TAG` tag cannot be blank and must not already exist.
 
 Example:
+* `addPreferenceTag 1 1 t/quiet`
+* `addPreferenceTag 1 1 nt/cool`
 * `addPreferenceTag 1 1 t/quiet t/pet-friendly t/cool`
 
-Result:
+Result for `addPreferenceTag 1 1 t/quiet t/pet-friendly t/cool`:
 * Before
 <br>![addPreferenceTagBefore](images/CS2103UG/addPreferenceTagBefore.png)
 
@@ -612,9 +628,11 @@ Input restriction:
 * `NEW_TAG` tag cannot be blank and must not already exist.
 
 Example:
+* `overwritePreferenceTag 3 2 t/2-bedrooms`
+* `overwritePreferenceTag 3 2 nt/seaside-view`
 * `overwritePreferenceTag 2 1 nt/2-bedrooms nt/seaside-view`
 
-Result:
+Result for `overwritePreferenceTag 2 1 nt/2-bedrooms nt/seaside-view`:
 * Before
 <br>![overwritePreferenceTagBefore](images/CS2103UG/overwritePreferenceTagBefore.png)
 
@@ -632,7 +650,7 @@ Input restriction:
 Example:
 * `deletePreference 2 1`
 
-Result:
+Result for `deletePreference 2 1`:
 * Before
 <br>![deletePreferenceBefore](images/CS2103UG/deletePreferenceBefore.png)
 
@@ -650,9 +668,10 @@ Input restriction:
 * The tag cannot be blank and must already exist.
 
 Example:
+* `deletePreferenceTag 3 1 t/pet-friendly`
 * `deletePreferenceTag 3 1 t/quiet t/cool`
 
-Result:
+Result for `deletePreferenceTag 3 1 t/quiet t/cool`:
 * Before
 <br>![deletePreferenceTagBefore](images/CS2103UG/deletePreferenceTagBefore.png)
 
@@ -673,9 +692,10 @@ Input restriction:
 * `NEW_TAG` tag cannot be blank and must not already exist.
 
 Example:
+* `addListingTag 2 t/quiet`
 * `addListingTag 2 t/quiet t/pet-friendly nt/spacious`
 
-Result:
+Result for `addListingTag 2 t/quiet t/pet-friendly nt/spacious`:
 * Before
 <br>![addListingTagBefore](images/CS2103UG/addListingTagBefore.png)
 
@@ -694,9 +714,11 @@ Input restriction:
 * `NEW_TAG` tag cannot be blank and must not already exist.
 
 Example:
+* `overwriteListingTag 3 t/4-bedrooms`
+* `overwriteListingTag 3 nt/seaside-view`
 * `overwriteListingTag 2 nt/4-bedrooms nt/2-toilets nt/seaside-view`
 
-Result:
+Result for `overwriteListingTag 2 nt/4-bedrooms nt/2-toilets nt/seaside-view`:
 * Before
 <br>![overwriteListingTagBefore](images/CS2103UG/overwriteListingTagBefore.png)
 
@@ -714,9 +736,10 @@ Input restriction:
 * The tag cannot be blank and must already exist.
 
 Example:
+* `deleteListingTag 3 t/pet-friendly`
 * `deleteListingTag 2 t/pet-friendly t/pool`
 
-Result:
+Result for `deleteListingTag 2 t/pet-friendly t/pool`:
 * Before
 <br>![deleteListingTagBefore](images/CS2103UG/deleteListingTagBefore.png)
 
@@ -740,7 +763,7 @@ Input restriction:
 Example:
 * `matchPreference 2 1`
 
-Result:
+Result for `matchPreference 2 1`:
 * Before
 <br>![matchPreferenceBefore](images/CS2103UG/matchPreferenceBefore.png)
 
@@ -765,7 +788,7 @@ Input restriction:
 Example:
 * `matchListing 1`
 
-Result:
+Result for `matchListing 1`:
 * Before
 <br>![matchListingBefore](images/CS2103UG/matchListingBefore.png)
 
@@ -786,7 +809,7 @@ Input restriction:
 Example:
 * `addOwner 2 1`
 
-Result:
+Result for `addOwner 2 1`:
 * Before
 <br>![addOwnerBefore](images/CS2103UG/addOwnerBefore.png)
 
@@ -804,7 +827,7 @@ Input restriction:
 Example:
 * `deleteOwner 1 1`
 
-Result:
+Result for `deleteOwner 1 1`:
 * Before
 <br>![deleteOwnerBefore](images/CS2103UG/deleteOwnerBefore.png)
 

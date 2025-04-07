@@ -382,3 +382,13 @@
     -fx-text-fill: white;
     -fx-background-color: -fx-seller-tag-color;
 }
+
+.black-scroll-pane {
+    -fx-background-color: derive(-fx-base-color, 20%);
+    -fx-border-color: derive(-fx-base-color, 10%);
+    -fx-border-top-width: 1px;
+}
+
+.black-scroll-pane .viewport {
+    -fx-background-color: derive(-fx-base-color, 20%);
+}
