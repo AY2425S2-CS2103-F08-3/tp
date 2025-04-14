@@ -45,6 +45,8 @@ MatchEstate automatically classifies people based on their data:
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/CS2103UG/sampleData.png)
 
+<!-- @@author ToxOptimism -->
+
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
@@ -63,6 +65,8 @@ MatchEstate automatically classifies people based on their data:
     * `clear` : Deletes all contacts.
 
     * `exit` : Exits the app.
+
+<!-- @@author -->
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -170,6 +174,7 @@ MatchEstate automatically classifies people based on their data:
 **Add Owner**  | Adds a person as owner to a listing |`addOwner PERSON_INDEX LISTING_INDEX`
 **Delete Owner**   | Removes an owner from a listing     |`deleteOwner LISTING_INDEX OWNER_INDEX`
 
+<!-- @@author ToxOptimism -->
 
 ### General Commands
 
@@ -214,6 +219,8 @@ If your changes to the data file makes its format invalid, MatchEstate will save
 Furthermore, certain edits can cause the MatchEstate to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 </box>
+
+<!-- @@author -->
 
 ### Person Management
 
